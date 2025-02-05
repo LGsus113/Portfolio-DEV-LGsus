@@ -1,11 +1,14 @@
 ---
 import SectionScheme from "@/components/utils/Section-Scheme.astro";
+import ItemProjects from "./Projects/Item-Projects.astro";
+
 import Code from "@/icons/code.astro";
 ---
 
-<SectionScheme id="proyectos" className="mb-40">
-  <h2 class="text-2xl xl:text-4xl font-bold flex gap-3 items-end">
+<SectionScheme id="proyectos" className="mb-40 gap-5">
+  <h2 class="text-2xl xl:text-4xl font-bold flex gap-3 items-end text-white">
     <Code class="size-7 xl:size-9" />
     Proyectos
   </h2>
+  <ItemProjects />
 </SectionScheme>
