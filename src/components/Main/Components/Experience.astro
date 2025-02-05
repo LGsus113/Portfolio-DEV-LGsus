@@ -2,17 +2,51 @@
 import SectionScheme from "@/components/utils/Section-Scheme.astro";
 import ExperienceType from "@/components/Main/Components/Experience/Experience-Type.astro";
 
+import ExperienceIcon from "@/icons/experience.astro";
+
 const EXPERIENCES = [
   {
     title: "Como desarrollador:",
     color: "green",
     items: [
       {
-        title: "Flowbite Application UI v2.0.0",
-        date: "Released on January 13th, 2022",
+        title: "Clon Tesla Page",
+        date: "Actualmente...",
         description:
-          "Get access to over 20+ pages including a dashboard layout, charts, kanban board, calendar, and pre-order E-commerce & Marketing pages.",
-        download: "#",
+          "Clon de pagina antigua de Tesla con Astro, Tailwind y Pnpm.",
+        download: "https://github.com/LGsus113/Tesla-Page-Astro.git",
+        badge: "latest",
+      },
+      {
+        title: "DAWI: Proyecto Spring Boot",
+        date: "Diciembre 22, 2024",
+        description:
+          "Proyecto de presentacion final para curso en cibertec, 5to ciclo. Sistema de Ventas en spring boot con templates de prueba. Proyecto Java",
+        download: "https://github.com/LGsus113/ProyectoDawi.git",
+        badge: "latest",
+      },
+      {
+        title: "D-CoDX: Proyecto Cibertec",
+        date: "Diciembre 1, 2024",
+        description:
+          "Proyecto de presentacion final para curso en cibertec, 5to ciclo. Pagina creada como proyecto integrador para diseñadores y programadores. Versión con ReactJS.",
+        download: "https://github.com/LGsus113/D-CoDX-.-React-Vite.git",
+        badge: "latest React",
+      },
+      {
+        title: "D-CoDX: Proyecto Cibertec",
+        date: "Noviembre 28, 2024",
+        description:
+          "Proyecto de presentacion final para curso en cibertec, 4to ciclo. Pagina creada como proyecto integrador para diseñadores y programadores. Versión con HTML, CSS y JS.",
+        download: "https://github.com/LGsus113/D-CoDX.git",
+        badge: "latest HTML",
+      },
+      {
+        title: "SMV: Proyecto Cibertec",
+        date: "Julio 13, 2024",
+        description:
+          "Proyecto de 4to cibertec. Proyecto que incluye Backend con Java Srping Boot y Frontend con React nivel principiante.",
+        download: "https://github.com/LGsus113/SMV.git",
         badge: "latest",
       },
     ],
@@ -49,6 +83,10 @@ const EXPERIENCES = [
 ---
 
 <SectionScheme id="experiencia" className="gap-10">
+  <h2 class="text-4xl font-bold flex gap-3 items-end">
+    <ExperienceIcon class="size-9" />
+    Experiencia Laboral
+  </h2>
   {
     EXPERIENCES.map(({ title, color, items }) => (
       <ExperienceType title={title} color={color} experiences={items} />
