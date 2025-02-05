@@ -1,0 +1,66 @@
+---
+import LgsusLogo from "@public/Lgsus.webp";
+import ListNav from "@/components/utils/List-Nav.astro";
+import Hovered from "@/components/utils/Hovered.astro";
+
+const data = [
+  {
+    label: "Inicio",
+    href: "#",
+  },
+  {
+    label: "Sobre Mí",
+    href: "#",
+  },
+  {
+    label: "Proyectos",
+    href: "#",
+  },
+  {
+    label: "Contactame",
+    href: "#",
+  },
+];
+---
+
+<header
+  id="LGsus-Portfolio"
+  class="w-[1420px] flex justify-between items-center fixed top-0 z-50 p-4 rounded-sm transition-all duration-300 ease-in-out"
+>
+  <div>
+    <img
+      class="rounded-full w-[60px] h-[60px] object-cover object-top"
+      src={LgsusLogo.src}
+      alt="Logo"
+    />
+  </div>
+  <nav>
+    <ListNav items={data} />
+  </nav>
+  <Hovered items="#LGsus-Portfolio nav li" container="#LGsus-Portfolio" />
+</header>
+
+<script>
+  const $header = document.querySelector("#LGsus-Portfolio") as HTMLElement;
+
+  const observerOptions = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.1,
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      const { isIntersecting } = entry;
+
+      if (isIntersecting) {
+        $header.classList.remove("backdrop-blur-sm");
+      } else {
+        $header.classList.add("backdrop-blur-sm");
+      }
+    });
+  }, observerOptions);
+
+  const $sections = document.querySelectorAll("#mainSection section");
+  $sections.forEach((section) => observer.observe(section));
+</script>

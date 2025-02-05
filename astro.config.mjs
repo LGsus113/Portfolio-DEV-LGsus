@@ -1,5 +1,17 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
+import tailwind from "@astrojs/tailwind";
+import { resolve } from "path";
 
 // https://astro.build/config
-export default defineConfig({});
+export default defineConfig({
+  integrations: [tailwind()],
+  vite: {
+    resolve: {
+      alias: {
+        "@": resolve("./src"),
+        "@public": resolve("./public"),
+      },
+    },
+  },
+});

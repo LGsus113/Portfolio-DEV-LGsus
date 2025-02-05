@@ -1,0 +1,38 @@
+---
+export interface ListProps {
+  label: string;
+  href: string;
+  image: any;
+  target?: string;
+}
+
+const { items, variant } = Astro.props as {
+  items: ListProps[];
+  variant?: "default" | "alt";
+};
+---
+
+<ul class="flex text-base font-semibold">
+  {
+    items.map((item) => {
+      const ImageComponent = item.image;
+      const buttonClass =
+        variant === "alt"
+          ? "border-2 border-white rounded-full mr-4 text-white hover:text-yellow-100 hover:border-yellow-100 hover:[&>a]:scale-95 active:scale-110 transition-all duration-300"
+          : "";
+
+      return (
+        <li class={`flex ${buttonClass}`}>
+          <a
+            href={item.href}
+            class="flex items-center gap-2 px-4 py-2 transition-all duration-300"
+            target={item.target ? `${item.target}` : "_self"}
+          >
+            {ImageComponent && <ImageComponent class="w-6 h-6 text-current" />}
+            {item.label}
+          </a>
+        </li>
+      );
+    })
+  }
+</ul>

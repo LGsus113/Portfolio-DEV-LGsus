@@ -1,0 +1,62 @@
+---
+import Badge from "@/components/utils/Badge.astro";
+import ListNav from "@/components/utils/List-Nav.astro";
+
+import LGsus from "@public/download.webp";
+import LinkedIn from "@/icons/linkedin.astro";
+import GitHub from "@/icons/github.astro";
+
+const buttons = [
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/lgsus-tm-16b592338",
+    image: LinkedIn,
+    target: "_blank",
+  },
+  {
+    label: "GitHub",
+    href: "https://github.com/LGsus113",
+    image: GitHub,
+    target: "_blank",
+  },
+];
+---
+
+<section
+  class="w-full h-auto flex flex-col mx-auto my-4 py-40 items-start justify-center"
+>
+  <div
+    class="rounded-full flex items-center justify-center w-auto h-auto overflow-hidden shadow-md shadow-purple-300/[0.4]"
+  >
+    <img
+      src={LGsus.src}
+      alt="LGsus"
+      class="w-32 h-32 rounded-full object-cover object-top transition-all duration-500 ease-in-out hover:scale-110"
+    />
+  </div>
+  <h1 class="text-white text-5xl font-bold flex flex-row gap-4 pb-10">
+    Hey, soy Jesus Medina (LGsus) <a
+      href="https://www.linkedin.com/in/lgsus-tm-16b592338"
+      target="_blank"
+      rel="noopener"
+      class="flex justify-center items-center"
+    >
+      <Badge>Disponible para trabajar</Badge>
+    </a>
+  </h1>
+  <h2 class="text-2xl text-wrap">
+    <span class="text-purple-300">+2 Años de Experiencia. </span>
+    <span class="text-green-400">Desarrollador Web. </span>
+    <span class="text-yellow-100">De Trujillo, Peru. </span>
+    <span class="text-purple-300">
+      Con ansias de aprender y seguir mejorando.
+    </span>
+    <span class="text-yellow-100">e</span>
+    <span class="text-green-400">
+      Interesado en el Desarrollo Frontend y Backend.
+    </span>
+  </h2>
+  <nav class="w-auto h-auto mt-5">
+    <ListNav items={buttons} variant="alt" />
+  </nav>
+</section>
