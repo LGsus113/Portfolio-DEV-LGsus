@@ -18,7 +18,7 @@ const { items, variant } = Astro.props as {
       const ImageComponent = item.image;
       const buttonClass =
         variant === "alt"
-          ? "border-2 border-white rounded-full mr-4 text-white hover:text-yellow-100 hover:border-yellow-100 hover:[&>a]:scale-95 active:scale-110 transition-all duration-300"
+          ? "border-2 border-white rounded-full mr-4 text-white backdrop-blur-sm hover:text-yellow-100 hover:border-yellow-100 hover:[&>a]:scale-95 active:scale-110 transition-all duration-300"
           : "";
 
       return (
@@ -28,7 +28,7 @@ const { items, variant } = Astro.props as {
             class="flex items-center gap-2 px-4 py-2 transition-all duration-300"
             target={item.target ? `${item.target}` : "_self"}
           >
-            {ImageComponent && <ImageComponent class="w-6 h-6 text-current" />}
+            {ImageComponent && <ImageComponent class="size-6 text-current" />}
             {item.label}
           </a>
         </li>

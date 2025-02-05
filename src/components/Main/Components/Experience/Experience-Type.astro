@@ -1,0 +1,34 @@
+---
+import ExperienceItem from "@/components/Main/Components/Experience/Experience-Item.astro";
+
+type Experience = {
+  title: string;
+  date: string;
+  description: string;
+  download: string;
+  badge: string;
+};
+
+const { title, color, experiences } = Astro.props;
+
+const colorClass: Record<"green" | "purple" | "yellow", string> = {
+  green: "text-green-400",
+  purple: "text-purple-400",
+  yellow: "text-yellow-400",
+};
+
+const colors = colorClass[color as keyof typeof colorClass] || "text-gray-700"
+---
+
+<div class="flex flex-col gap-4">
+  <h1 class={`text-2xl ${colors} font-medium opacity-60`}>
+    {title}
+  </h1>
+  <ol class="relative border-s border-gray-200 dark:border-gray-700">
+    {
+      experiences.map((item: Experience) => (
+        <ExperienceItem {...item} color={color} />
+      ))
+    }
+  </ol>
+</div>

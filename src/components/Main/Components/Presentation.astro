@@ -1,0 +1,46 @@
+---
+import SectionScheme from "@/components/utils/Section-Scheme.astro";
+import Badge from "@/components/utils/Badge.astro";
+import ListNav from "@/components/utils/List-Nav.astro";
+import ImageDev from "@/components/Main/Components/Presentation/Image-Dev.astro";
+import Information from "@/components/Main/Components/Presentation/Information.astro";
+
+import LGsus from "@public/download.webp";
+import LinkedIn from "@/icons/linkedin.astro";
+import GitHub from "@/icons/github.astro";
+import Mail from "@/icons/mail.astro";
+
+const buttons = [
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/lgsus-tm-16b592338",
+    image: LinkedIn,
+    target: "_blank",
+  },
+  {
+    label: "GitHub",
+    href: "https://github.com/LGsus113",
+    image: GitHub,
+    target: "_blank",
+  },
+  {
+    label: "lgsustm@gmail.com",
+    href: "mailto:lgsustm@gmail.com?subject=Hola!!&body=Quisiera más contactarme contigo.",
+    image: Mail,
+    target: "_blank",
+  },
+];
+---
+
+<SectionScheme
+  id="inicio"
+  className="mx-auto my-4 py-40 items-start justify-center"
+>
+  <ImageDev image={LGsus.src} />
+  <Information>
+    <Badge>Disponible para trabajar</Badge>
+  </Information>
+  <nav class="w-auto h-auto mt-5">
+    <ListNav items={buttons} variant="alt" />
+  </nav>
+</SectionScheme>

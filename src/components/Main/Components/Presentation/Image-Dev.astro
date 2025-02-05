@@ -1,0 +1,17 @@
+---
+interface Props {
+  image: string;
+}
+
+const props: Props = Astro.props;
+---
+
+<div
+  class="rounded-full flex items-center justify-center size-auto overflow-hidden shadow-md shadow-purple-300/[0.4]"
+>
+  <img
+    src={props.image}
+    alt="LGsus"
+    class="size-32 rounded-full object-cover object-top transition-all duration-500 ease-in-out hover:scale-110"
+  />
+</div>

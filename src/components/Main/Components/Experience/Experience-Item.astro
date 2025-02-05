@@ -1,0 +1,67 @@
+---
+import Icon from "@/icons/TimeLineIconCalendar.astro";
+
+import ButtonDownload from "@/components/utils/ButtonDownload.astro";
+import Badge2 from "@/components/utils/Badge-2.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  date: string;
+  download: string;
+  badge: string;
+  color: string;
+}
+
+const { title, description, date, download, badge, color } = Astro.props;
+
+const colorClasses: Record<
+  "green" | "purple" | "yellow",
+  { bg: string; text: string }
+> = {
+  green: {
+    bg: "bg-green-100 dark:bg-green-900",
+    text: "text-green-800 dark:text-green-300",
+  },
+  purple: {
+    bg: "bg-purple-100 dark:bg-purple-900",
+    text: "text-purple-800 dark:text-purple-300",
+  },
+  yellow: {
+    bg: "bg-yellow-100 dark:bg-yellow-900",
+    text: "text-yellow-800 dark:text-yellow-300",
+  },
+};
+
+const { bg, text } = colorClasses[color as keyof typeof colorClasses] || {
+  bg: "bg-gray-100 dark:bg-gray-900",
+  text: "text-gray-800 dark:text-gray-300",
+};
+---
+
+<li class="mb-10 ms-6">
+  <span class={`absolute flex items-center justify-center w-6 h-6 ${bg} rounded-full -start-3 ring-8 ring-white dark:ring-gray-900`}>
+    <Icon />
+  </span>
+  <h3
+    class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white"
+  >
+    {title}
+    {
+      badge && (
+        <Badge2 bg={bg} text={text}>
+          {badge}
+        </Badge2>
+      )
+    }
+  </h3>
+  <time
+    class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500"
+  >
+    {date}
+  </time>
+  <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">
+    {description}
+  </p>
+  {download && <ButtonDownload link={download} />}
+</li>

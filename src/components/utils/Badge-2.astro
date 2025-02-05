@@ -1,0 +1,14 @@
+---
+interface Props {
+  bg: string;
+  text: string;
+}
+
+const { bg, text } = Astro.props;
+---
+
+<span
+  class={`${bg} ${text} text-sm font-medium me-2 px-2.5 py-0.5 rounded-sm ms-3`}
+>
+  <slot />
+</span>

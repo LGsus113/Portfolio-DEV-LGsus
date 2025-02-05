@@ -1,11 +1,15 @@
 ---
-import LgsusLogo from "@public/Lgsus.webp";
+import LGsusLogo from "@/components/Header/Components/Logo.astro";
 import ListNav from "@/components/utils/List-Nav.astro";
 import Hovered from "@/components/utils/Hovered.astro";
 
 const data = [
   {
     label: "Inicio",
+    href: "#",
+  },
+  {
+    label: "Experiencia",
     href: "#",
   },
   {
@@ -23,22 +27,16 @@ const data = [
 ];
 ---
 
-<header
+<heade
   id="LGsus-Portfolio"
   class="w-[1420px] flex justify-between items-center fixed top-0 z-50 p-4 rounded-sm transition-all duration-300 ease-in-out"
 >
-  <div>
-    <img
-      class="rounded-full w-[60px] h-[60px] object-cover object-top"
-      src={LgsusLogo.src}
-      alt="Logo"
-    />
-  </div>
+  <LGsusLogo />
   <nav>
-    <ListNav items={data} />
+    <ListNav items={data} variant="default" />
   </nav>
   <Hovered items="#LGsus-Portfolio nav li" container="#LGsus-Portfolio" />
-</header>
+</heade>
 
 <script>
   const $header = document.querySelector("#LGsus-Portfolio") as HTMLElement;

@@ -1,0 +1,57 @@
+---
+import SectionScheme from "@/components/utils/Section-Scheme.astro";
+import ExperienceType from "@/components/Main/Components/Experience/Experience-Type.astro";
+
+const EXPERIENCES = [
+  {
+    title: "Como desarrollador:",
+    color: "green",
+    items: [
+      {
+        title: "Flowbite Application UI v2.0.0",
+        date: "Released on January 13th, 2022",
+        description:
+          "Get access to over 20+ pages including a dashboard layout, charts, kanban board, calendar, and pre-order E-commerce & Marketing pages.",
+        download: "#",
+        badge: "latest",
+      },
+    ],
+  },
+  {
+    title: "En atención al cliente:",
+    color: "yellow",
+    items: [
+      {
+        title: "Flowbite Application UI v2.0.0",
+        date: "Released on January 13th, 2022",
+        description:
+          "Get access to over 20+ pages including a dashboard layout, charts, kanban board, calendar, and pre-order E-commerce & Marketing pages.",
+        download: "#",
+        badge: "latest",
+      },
+    ],
+  },
+  {
+    title: "Como técnico ensamblador:",
+    color: "purple",
+    items: [
+      {
+        title: "Flowbite Application UI v2.0.0",
+        date: "Released on January 13th, 2022",
+        description:
+          "Get access to over 20+ pages including a dashboard layout, charts, kanban board, calendar, and pre-order E-commerce & Marketing pages.",
+        download: "#",
+        badge: "latest",
+      },
+    ],
+  },
+];
+---
+
+<SectionScheme id="experiencia" className="gap-10">
+  {
+    EXPERIENCES.map(({ title, color, items }) => (
+      <ExperienceType title={title} color={color} experiences={items} />
+    ))
+  }
+</SectionScheme>
