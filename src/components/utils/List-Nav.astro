@@ -12,20 +12,20 @@ const { items, variant } = Astro.props as {
 };
 ---
 
-<ul class="flex text-base font-semibold">
+<ul class="flex flex-col xl:flex-row text-base font-semibold">
   {
     items.map((item) => {
       const ImageComponent = item.image;
       const buttonClass =
         variant === "alt"
-          ? "border-2 border-white rounded-full mr-2 xl:mr-4 text-white backdrop-blur-sm hover:text-yellow-100 hover:border-yellow-100 hover:[&>a]:scale-95 active:scale-110 transition-all duration-300"
+          ? "border-2 border-white rounded-full mb-4 xl:mr-4 text-white backdrop-blur-sm hover:text-yellow-100 hover:border-yellow-100 hover:[&>a]:scale-95 active:scale-110 transition-all duration-300"
           : "";
 
       return (
         <li class={`flex ${buttonClass}`}>
           <a
             href={item.href}
-            class="flex items-center gap-2 px-2 py-1 xl:px-4 xl:py-2 transition-all duration-300"
+            class="w-full flex items-center gap-2 px-4 py-2 transition-all duration-300"
             target={item.target ? `${item.target}` : "_self"}
           >
             {ImageComponent && <ImageComponent class="size-4 xl:size-6 text-current" />}
