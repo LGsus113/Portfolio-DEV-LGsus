@@ -1,4 +1,6 @@
 ---
+import Button from "@/components/utils/Button.astro";
+
 import Tesla from "@/assets/landings/tesla-landing.webp";
 import DCoDX from "@/assets/landings/dcodx.jpg";
 
@@ -7,6 +9,7 @@ import TailwindIcon from "@/icons/tailwind.astro";
 import JSIcon from "@/icons/js.astro";
 import React from "@/icons/react.astro";
 import CSS from "@/icons/css.astro";
+import GitHub from "@/icons/github.astro";
 
 const TAGS = {
   Astro: {
@@ -58,31 +61,40 @@ const PROJECTS = [
 ---
 
 {
-  PROJECTS.map(({ title, description, image, tags, color, tamanio }) => (
-    <article class="flex flex-col gap-5 items-center">
-      <div class="w-full h-auto flex flex-col gap-1">
-        <h3 class={`text-2xl xl:text-3xl ${color}`}>{title}</h3>
-        <p class="text-base xl:text-lg xl:text-justify text-gray-500">{description}</p>
-      </div>
-      <div
-        class={`w-full ${tamanio} 2xl:w-[55vw] relative overflow-hidden flex items-center rounded-md shadow-xl shadow-purple-300/[0.2] group`}
-      >
-        <img
-          src={image}
-          alt={`Captura de pantalla del proyecto ${title}`}
-          class="w-full h-full object-cover object-center group-hover:scale-105 transition-all duration-300 ease-in-out"
-        />
-        <ul class="absolute top-0 left-5 z-10 flex flex-wrap justify-start gap-2 py-5 text-white">
-          {tags.map(({ name, icon: Icon }) => (
-            <li>
-              <span class="w-auto h-auto flex flex-1 gap-1 xl:gap-2 text-lg items-center justify-center px-4 py-1 bg-purple-900/[.9] rounded-full shadow-inner shadow-purple-300/[.5]">
-                <Icon class="size-4" />
-                {name}
-              </span>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </article>
-  ))
+  PROJECTS.map(
+    ({ title, description, image, tags, color, tamanio, github }) => (
+      <article class="flex flex-col gap-5 items-center">
+        <div class="w-full h-auto flex flex-col gap-1">
+          <h3 class={`text-2xl xl:text-3xl ${color}`}>{title}</h3>
+          <p class="text-base xl:text-lg xl:text-justify text-gray-500">
+            {description}
+          </p>
+        </div>
+        <div
+          class={`w-full ${tamanio} 2xl:w-[55vw] relative overflow-hidden flex items-center rounded-md shadow-xl shadow-purple-300/[0.2] group`}
+        >
+          <img
+            src={image}
+            alt={`Captura de pantalla del proyecto ${title}`}
+            class="w-full h-full object-cover object-center group-hover:scale-105 transition-all duration-300 ease-in-out"
+          />
+          <ul class="absolute top-1 left-1 lg:top-5 lg:left-5 z-10 flex flex-wrap justify-start gap-2 text-white">
+            {tags.map(({ name, icon: Icon }) => (
+              <li>
+                <span class="w-auto h-auto flex flex-1 gap-1 xl:gap-2 text-lg items-center justify-center px-4 py-1 bg-purple-900/[.9] rounded-full shadow-inner shadow-purple-300/[.5]">
+                  <Icon class="size-4" />
+                  {name}
+                </span>
+              </li>
+            ))}
+          </ul>
+          <footer class="absolute bottom-1 right-1 lg:bottom-5 lg:right-5">
+            <Button link={github} title="Github">
+              <GitHub class="size-5 me-3.5"/>
+            </Button>
+          </footer>
+        </div>
+      </article>
+    )
+  )
 }

@@ -1,7 +1,8 @@
 ---
 import Icon from "@/icons/TimeLineIconCalendar.astro";
+import Download from "@/icons/DownloadIcon.astro";
 
-import ButtonDownload from "@/components/utils/ButtonDownload.astro";
+import ButtonDownload from "@/components/utils/Button.astro";
 import Badge2 from "@/components/utils/Badge-2.astro";
 
 interface Props {
@@ -40,7 +41,9 @@ const { bg, text } = colorClasses[color as keyof typeof colorClasses] || {
 ---
 
 <li class="mb-10 ms-6">
-  <span class={`absolute flex items-center justify-center size-6 ${bg} rounded-full -start-3 ring-8 ring-gray-900 dark:ring-gray-900`}>
+  <span
+    class={`absolute flex items-center justify-center size-6 ${bg} rounded-full -start-3 ring-8 ring-gray-900 dark:ring-gray-900`}
+  >
     <Icon />
   </span>
   <h3
@@ -63,5 +66,11 @@ const { bg, text } = colorClasses[color as keyof typeof colorClasses] || {
   <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-500">
     {description}
   </p>
-  {download && <ButtonDownload link={download} />}
+  {
+    download && (
+      <ButtonDownload link={download} title="Descargar codigo">
+        <Download />
+      </ButtonDownload>
+    )
+  }
 </li>
