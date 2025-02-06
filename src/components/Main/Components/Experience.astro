@@ -111,9 +111,16 @@ const EXPERIENCES = [
     <ExperienceIcon class="size-7 xl:size-9" />
     Experiencia Laboral
   </h2>
-  {
-    EXPERIENCES.map(({ title, color, items }) => (
-      <ExperienceType title={title} color={color} experiences={items} />
-    ))
-  }
+  <div class="w-full grid grid-cols-1 grid-rows-auto lg:grid-cols-2 lg:grid-rows-2 gap-5">
+    {
+      EXPERIENCES.map(({ title, color, items }, index) => (
+        <ExperienceType
+          title={title}
+          color={color}
+          experiences={items}
+          class={`p-4 ${index === 0 ? "row-span-2" : "row-span-1"}`}
+        />
+      ))
+    }
+  </div>
 </SectionScheme>

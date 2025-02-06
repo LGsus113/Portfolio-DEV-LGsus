@@ -9,7 +9,7 @@ type Experience = {
   badge: string;
 };
 
-const { title, color, experiences } = Astro.props;
+const { title, color, experiences, class: customClass } = Astro.props;
 
 const colorClass: Record<"green" | "purple" | "yellow", string> = {
   green: "text-green-400",
@@ -17,10 +17,10 @@ const colorClass: Record<"green" | "purple" | "yellow", string> = {
   yellow: "text-yellow-400",
 };
 
-const colors = colorClass[color as keyof typeof colorClass] || "text-gray-700"
+const colors = colorClass[color as keyof typeof colorClass] || "text-gray-700";
 ---
 
-<div class="flex flex-col gap-4">
+<div class={`flex flex-col gap-4 ${customClass ?? ""}`}>
   <h1 class={`text-xl xl:text-2xl ${colors} font-medium opacity-60`}>
     {title}
   </h1>

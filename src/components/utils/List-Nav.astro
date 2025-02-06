@@ -12,7 +12,11 @@ const { items, variant } = Astro.props as {
 };
 ---
 
-<ul class="flex flex-col xl:flex-row text-base font-semibold">
+<ul
+  class={`flex 
+  ${variant === "alt" ? "flex-row" : "flex-col xl:flex-row"} 
+  flex-wrap gap-x-2 text-base font-semibold`}
+>
   {
     items.map((item) => {
       const ImageComponent = item.image;
@@ -27,7 +31,7 @@ const { items, variant } = Astro.props as {
         <li class={`flex ${buttonClass}`}>
           <a
             href={item.href}
-            class="w-full flex items-center gap-2 px-4 py-2 transition-all duration-300"
+            class="w-full flex flex-1 items-center gap-2 px-4 py-2 transition-all duration-300"
             target={item.target ? `${item.target}` : "_self"}
           >
             {ImageComponent && (

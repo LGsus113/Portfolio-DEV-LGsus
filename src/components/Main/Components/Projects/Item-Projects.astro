@@ -41,6 +41,7 @@ const PROJECTS = [
     image: Tesla.src,
     tags: [TAGS.Astro, TAGS.Tailwind, TAGS.JS],
     color: "text-green-300",
+    tamanio: "sm:h-[27vh] md:h-[36vh] lg:h-[45vh] xl:h-[55vh]"
   },
   {
     title: "D-CoDX",
@@ -51,20 +52,21 @@ const PROJECTS = [
     image: DCoDX.src,
     tags: [TAGS.React, TAGS.Css],
     color: "text-yellow-200",
+    tamanio: "xl:h-[70vh]"
   },
 ];
 ---
 
 {
-  PROJECTS.map(({ title, description, image, tags, color }) => (
+  PROJECTS.map(({ title, description, image, tags, color, tamanio }) => (
     <article class="flex flex-col gap-3">
       <h3 class={`text-2xl xl:text-4xl font-medium ${color}`}>{title}</h3>
       <p class="text-base xl:text-xl text-white">{description}</p>
-      <div class="w-full h-auto xl:w-[55vw] xl:h-[50vh] relative overflow-hidden flex items-center rounded-md shadow-xl shadow-purple-300/[0.2] group">
+      <div class={`w-full ${tamanio} 2xl:w-[55vw] relative overflow-hidden flex items-center rounded-md shadow-xl shadow-purple-300/[0.2] group`}>
         <img
           src={image}
           alt={`Captura de pantalla del proyecto ${title}`}
-          class="object-cover group-hover:scale-105 transition-all duration-300 ease-in-out"
+          class="w-full h-full object-cover object-center group-hover:scale-105 transition-all duration-300 ease-in-out"
         />
         <ul class="absolute top-0 left-5 z-10 flex flex-wrap justify-start gap-2 py-5 text-white">
           {tags.map(({ name, icon: Icon }) => (
