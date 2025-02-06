@@ -29,7 +29,7 @@ const data = [
 
 <header
   id="LGsus-Portfolio"
-  class="w-full h-auto xl:w-[1420px] flex flex-row justify-between items-center fixed top-0 z-50 p-4 rounded-sm transition-all duration-300 ease-in-out"
+  class="w-11/12 h-auto xl:w-[1420px] border border-white bg-green-100/[0.2] flex flex-row justify-between items-center fixed top-5 backdrop-blur z-50 rounded-lg p-4 xl:rounded-2xl transition-all duration-300 ease-in-out"
 >
   <LGsusLogo />
   <nav class="mt-0 md:ml-10">
@@ -37,28 +37,3 @@ const data = [
   </nav>
   <Hovered items="#LGsus-Portfolio nav li" container="#LGsus-Portfolio" />
 </header>
-
-<script>
-  const $header = document.querySelector("#LGsus-Portfolio") as HTMLElement;
-
-  const observerOptions = {
-    root: null,
-    rootMargin: "0px",
-    threshold: 0.1,
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      const { isIntersecting } = entry;
-
-      if (isIntersecting) {
-        $header.classList.remove("backdrop-blur-sm");
-      } else {
-        $header.classList.add("backdrop-blur-sm");
-      }
-    });
-  }, observerOptions);
-
-  const $sections = document.querySelectorAll("#mainSection section");
-  $sections.forEach((section) => observer.observe(section));
-</script>
