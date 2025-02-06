@@ -1,0 +1,58 @@
+---
+interface Props {
+  group: Array<any>;
+  index: number;
+}
+
+const { group, index } = Astro.props;
+---
+
+<div
+  class="w-full h-[50px] md:h-[78px] xl:h-[115px] rounded-lg overflow-hidden border shadow-inner shadow-green-200 border-green-300/[.7] py-2 backdrop-blur-sm group"
+>
+  <div class={`w-full flex relative`} style={{ "--cantidad": group.length }}>
+    {
+      group.map((Icon, idx) => (
+        <div
+          class={`size-9 md:size-16 xl:size-24 absolute ${index === 0 ? "left-full" : "right-full"} animationRun`}
+          style={{
+            "--posicion": idx + 1,
+            "--direction": index === 0 ? "left" : "right",
+          }}
+        >
+          <Icon class="size-full" />
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .animationRun {
+    animation: run 10s linear infinite;
+    animation-delay: calc((10s / var(--cantidad)) * (var(--posicion) - 1));
+    animation-name: var(--direction);
+  }
+
+  .group:hover .animationRun {
+    animation-play-state: paused;
+  }
+
+  @keyframes left {
+    from {
+      left: 100%;
+    }
+    to {
+      left: -96px;
+    }
+  }
+
+  @keyframes right {
+    from {
+      right: 100%;
+    }
+    to {
+      right: -96px;
+    }
+  }
+</style>
