@@ -1,0 +1,49 @@
+---
+import Encabezado from "@/components/utils/Encabezado.astro";
+import SectionScheme from "@/components/utils/Section-Scheme.astro";
+import TextUse from "@/components/utils/Text-Use.astro";
+
+import Profile from "@/icons/profile.astro";
+import Joker from "@public/Joker.webp";
+
+const data = [
+  {
+    description:
+      "Soy Jesus Medina, ese es mi nombre; mi apodo 'LGsus', todo comenzó cuando mis amigos empezaron a decirme yisus, esa manera de decirme se hizo popular y llego a todo mi entorno, todos empezaron a decirme de esa manera. Fue así como empecé a buscarme un nick para mis plataformas y redes, ahí me acordé que la 'G' en ingles se pronuncia 'Yi' y yo le agregué la 'L', en su pronunciación inglesa, así nació mi apodo y mi marca 'LG'.",
+    className: "text-green-300/[.7]",
+  },
+  {
+    description:
+      "Mi primera vez programando fue cuando empecé mi carrera tecnica, recuerdo que fue con 'Java'; haciamos una clase de creación de calculadoras y aplicabamos la logica para que funcione correctamente, pero simpre tuve la intención de saber que mas podia hacer, mi intención de lograr mas y no solo quedarme con lo que veía, aunque fue con 'Java' y para 'desktop', eso despertó en mi las ganas de aprender mas y mi pasión por la programación.",
+    className: "text-purple-300/[.7]",
+  },
+  {
+    description:
+      "Ese fue el camino que recorrí para llegar a programar, aprendí muchas cosas y estoy agradecido, cuando descubrí la programación web y el diseño para esto, fue lo mejor para mi, asi me metí con muchas ganas a aprenderlo, empecé con 'React', y fui avanzando con mi aprendizaje, aprendiendo maneras mas modernas de programar en 'HTML' y 'CSS', mas 'frameworks', incluso, a programar backend con 'Spring Boot', fue lo mejor, hasta día de hoy la mejor experiencia que viví en mi vida.",
+    className: "text-purple-300/[.7]",
+  },
+];
+---
+
+<SectionScheme id="sobre-mi" className="gap-10">
+  <Encabezado title="Sobre Mí">
+    <Profile class="size-7 xl:size-9" />
+  </Encabezado>
+  <article class="flex gap-5 items-center justify-between">
+    <div class="xl:w-2/3 flex flex-col gap-3">
+      {
+        data.map(({ description, className }) => (
+          <TextUse
+            description={description}
+            className={`${className} text-lg`}
+          />
+        ))
+      }
+    </div>
+    <div
+      class="rounded-full size-72 overflow-hidden border border-yellow-200/[.7] backdrop-blur-sm"
+    >
+      <img src={Joker.src} alt="joker" class="object-cover object-center" />
+    </div>
+  </article>
+</SectionScheme>

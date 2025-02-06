@@ -28,41 +28,45 @@ const TAGS = {
   Css: {
     name: "CSS",
     icon: CSS,
-  }
+  },
 };
 
 const PROJECTS = [
   {
     title: "Tesla Landing - Clon",
     description:
-      "Clon de la pagina de tesla antigua con Astro, Tailwind y JS. Para aprendizaje y practica del framework utilizado. Optimizado solo para desktop y uso de animaciones para la misma.",
+      "Clon de la pagina de tesla antigua, involucra la creacion de las animaciones y diseño de la pagina en base a la pagina original, todo esto realizado con Astro, Tailwind y JS. Para aprendizaje, practica y mejora en el framework utilizado . Optimizado solo para desktop con un enfoque a mejorar en responsividad para mas adelante; el uso de animaciones tambien optimizados solo para desktop.",
     link: "#",
     github: "https://github.com/LGsus113/Tesla-Page-Astro.git",
     image: Tesla.src,
     tags: [TAGS.Astro, TAGS.Tailwind, TAGS.JS],
     color: "text-green-300",
-    tamanio: "sm:h-[27vh] md:h-[36vh] lg:h-[45vh] xl:h-[55vh]"
+    tamanio: "sm:h-[27vh] md:h-[36vh] lg:h-[45vh] xl:h-[55vh]",
   },
   {
-    title: "D-CoDX",
+    title: "D-CoDX - Proyecto Cibertec",
     description:
-      "Proyecto Cibertec de presentacion final de curso. Proyecto de 5to ciclo. Proyecto integrador para diseñadores y programadores.",
+      "Proyecto educativo para presentacion final de curso en cibertec, 5to ciclo. Intención de aprendizaje para programadores y disenadores con la busqueda de un entorno de trabajo saludable. Proyecto maqueta en dos versiones: versión con ReactJS y versió nativa con HTML, CSS y JS. Esta iniciativa busca dar una idea para generar una pagina web que ivolucre el trabajo ambos tipos de freelancers.",
     link: "#",
     github: "https://github.com/LGsus113/D-CoDX-.-React-Vite.git",
     image: DCoDX.src,
     tags: [TAGS.React, TAGS.Css],
     color: "text-yellow-200",
-    tamanio: "xl:h-[70vh]"
+    tamanio: "xl:h-[70vh]",
   },
 ];
 ---
 
 {
   PROJECTS.map(({ title, description, image, tags, color, tamanio }) => (
-    <article class="flex flex-col gap-3">
-      <h3 class={`text-2xl xl:text-4xl font-medium ${color}`}>{title}</h3>
-      <p class="text-base xl:text-xl text-white">{description}</p>
-      <div class={`w-full ${tamanio} 2xl:w-[55vw] relative overflow-hidden flex items-center rounded-md shadow-xl shadow-purple-300/[0.2] group`}>
+    <article class="flex flex-col gap-5 items-center">
+      <div class="w-full h-auto flex flex-col gap-1">
+        <h3 class={`text-2xl xl:text-3xl ${color}`}>{title}</h3>
+        <p class="text-base xl:text-lg xl:text-justify text-gray-500">{description}</p>
+      </div>
+      <div
+        class={`w-full ${tamanio} 2xl:w-[55vw] relative overflow-hidden flex items-center rounded-md shadow-xl shadow-purple-300/[0.2] group`}
+      >
         <img
           src={image}
           alt={`Captura de pantalla del proyecto ${title}`}

@@ -1,6 +1,7 @@
 ---
-import SectionScheme from "@/components/utils/Section-Scheme.astro";
+import Encabezado from "@/components/utils/Encabezado.astro";
 import ExperienceType from "@/components/Main/Components/Experience/Experience-Type.astro";
+import SectionScheme from "@/components/utils/Section-Scheme.astro";
 
 import ExperienceIcon from "@/icons/experience.astro";
 
@@ -13,7 +14,7 @@ const EXPERIENCES = [
         title: "Clon Tesla Page",
         date: "Actualmente...",
         description:
-          "Clon de pagina antigua de Tesla con Astro, Tailwind y Pnpm.",
+          "Clon de pagina antigua de Tesla con Astro, Tailwind y JS. Clon con fines educativos, para la practica y mejora del frameworl utilzado, asi como tambien la creacion de animaciones en componentes para poder ser reutilizados en proximos proyectos.",
         download: "https://github.com/LGsus113/Tesla-Page-Astro.git",
         badge: "latest Astro",
       },
@@ -21,7 +22,7 @@ const EXPERIENCES = [
         title: "DAWI: Proyecto Spring Boot",
         date: "Diciembre 22, 2024",
         description:
-          "Proyecto de presentacion final para curso en cibertec, 5to ciclo. Sistema de Ventas en spring boot con templates de prueba. Proyecto Java",
+          "Proyecto de presentacion final para curso en cibertec, 5to ciclo. Sistema de Ventas en spring boot con templates de prueba, el proyecto iicluye el uso de spring security solo para las templates, el uso de security con JWT (Jason Web Tokens) vendrá en una futura mejora. Proyecto Java",
         download: "https://github.com/LGsus113/ProyectoDawi.git",
         badge: "latest Java",
       },
@@ -29,7 +30,7 @@ const EXPERIENCES = [
         title: "D-CoDX: Proyecto Cibertec",
         date: "Diciembre 1, 2024",
         description:
-          "Proyecto de presentacion final para curso en cibertec, 5to ciclo. Pagina creada como proyecto integrador para diseñadores y programadores. Versión con ReactJS.",
+          "Proyecto de presentacion final para curso en cibertec, 5to ciclo. Pagina creada como proyecto integrador para diseñadores y programadores en dos versiones, esta es la versión con ReactJS. Proyecto Maqueta, solo diseño frontend sin funcionalidad para demostrar el manejor del framework utilizado.",
         download: "https://github.com/LGsus113/D-CoDX-.-React-Vite.git",
         badge: "latest React",
       },
@@ -37,7 +38,7 @@ const EXPERIENCES = [
         title: "D-CoDX: Proyecto Cibertec",
         date: "Noviembre 28, 2024",
         description:
-          "Proyecto de presentacion final para curso en cibertec, 4to ciclo. Pagina creada como proyecto integrador para diseñadores y programadores. Versión con HTML, CSS y JS.",
+          "Proyecto de presentacion final para curso en cibertec, 4to ciclo. Pagina creada como proyecto integrador para diseñadores y programadores en dos versiones, esta es la Versión con HTML, CSS y JS, como muestra del dominio de la programación moderna en la programacion con tecnologias nativas.",
         download: "https://github.com/LGsus113/D-CoDX.git",
         badge: "latest HTML",
       },
@@ -45,7 +46,7 @@ const EXPERIENCES = [
         title: "SMV: Proyecto Cibertec",
         date: "Julio 13, 2024",
         description:
-          "Proyecto de 4to cibertec. Proyecto que incluye Backend con Java Srping Boot y Frontend con React nivel principiante.",
+          "Proyecto de 4to cibertec. Incluye Backend con Java Srping Boot y Frontend con React. Proyecto de Inventario y baja de productos de almacen para la SMV, servicio de demostracion de mejora en el control del inventario.",
         download: "https://github.com/LGsus113/SMV.git",
         badge: "latest Front/Back",
       },
@@ -59,7 +60,7 @@ const EXPERIENCES = [
         title: "Restaurante Don Maco",
         date: "Junio, 2023 - Julio, 2024",
         description:
-          "Servicio de atencion con mozo en resturant campestre Don Maco - Simbal, Trujillo.",
+          "Servicio de atencion como mozo en resturant campestre Don Maco - Simbal, Trujillo. Satisfacción del cliente en un 90% de atencion y servicio al cliente. Ayuda y guia a travez del proceso de venta asi como tambien en el proceso de reclamo alguno.",
         download: "",
         badge: "Mozo",
       },
@@ -67,7 +68,7 @@ const EXPERIENCES = [
         title: "BiciStart SAC",
         date: "Noviembre, 2019 - Febrero, 2021",
         description:
-          "Vendedor en tienda de bicicletas y articulos de entretenimiento para niños. Nivel de satisfacción del cliente en un 80% en temporadas y campañas navideñas.",
+          "Vendedor en tienda de bicicletas y articulos de entretenimiento para niños. Nivel de satisfacción del cliente en un 80% en temporadas y campañas navideñas. Satisfacción del cliente en un 90% en todo momento ya sea para su compra o reclamo alguno.",
         download: "",
         badge: "Vendedor",
       },
@@ -75,7 +76,7 @@ const EXPERIENCES = [
         title: "PC Lista",
         date: "Marzo, 2019 - Setiembre, 2019",
         description:
-          "Servicio de vendedor de computadoras y articulos tecnologicos. Satisfacción de cliente en un 90% de atencion y servicio al cliente.",
+          "Servicio de vendedor de computadoras y articulos tecnologicos. Satisfacción de cliente en un 90% de atencion y servicio al cliente al momento de pedir ayuda y consejos tecnicos en compra, armado y mejora de sus articulos, añadiendo a esto el logro de tranquilidad y confianza del cliente.",
         download: "",
         badge: "Vendedor",
       },
@@ -89,7 +90,7 @@ const EXPERIENCES = [
         title: "BiciStart SAC",
         date: "Febrero, 2021 - Mayo, 2022",
         description:
-          "Cambio de rol en tienda de vendedor a ensamblador de bicicletas. Verificación de calidad y servicio de mantenimiento de todo tipo de bicicletas: Gama Alta - Gama Baja",
+          "Cambio de rol en tienda: vendedor a ensamblador de bicicletas. Verificación de calidad y servicio de mantenimiento de todo tipo de bicicletas: Gama Alta - Gama Baja, ayuda y guia tecnica para la venta y ensamble de componentes para bicicletas, presupuesteo de costos y asesoramiento en el armado del mismo.",
         download: "",
         badge: "Ensamblador",
       },
@@ -97,7 +98,7 @@ const EXPERIENCES = [
         title: "Bicimotos El Lider",
         date: "Mayo, 2022 - Junio - 2023",
         description:
-          "Servicio de ensamblado de Bicicletas para la venta masiva, bicicletas de uso cotidiano y mantenimientos de las mismas. Responsable del estado de salida de las bicicletas y consultor de mercaderia nueva para la tienda.",
+          "Servicio de ensamblado de Bicicletas para la venta masiva, bicicletas de uso cotidiano y mantenimientos de las mismas. Responsable del estado de salida de las bicicletas y consultor de mercaderia nueva para la tienda. Ademas de asesoramiento y capacitación para vendedores y guia de compra para los clientes cuando se solicite el servicio en tienda.",
         download: "",
         badge: "Tecnico",
       },
@@ -107,11 +108,12 @@ const EXPERIENCES = [
 ---
 
 <SectionScheme id="experiencia" className="gap-10 mb-40">
-  <h2 class="text-2xl xl:text-4xl font-bold flex gap-3 items-end text-white">
+  <Encabezado title="Experiencia Laboral">
     <ExperienceIcon class="size-7 xl:size-9" />
-    Experiencia Laboral
-  </h2>
-  <div class="w-full grid grid-cols-1 grid-rows-auto lg:grid-cols-2 lg:grid-rows-2 gap-5">
+  </Encabezado>
+  <div
+    class="w-full grid grid-cols-1 grid-rows-auto lg:grid-cols-2 lg:grid-rows-2 gap-5"
+  >
     {
       EXPERIENCES.map(({ title, color, items }, index) => (
         <ExperienceType
