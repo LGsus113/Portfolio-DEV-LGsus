@@ -45,6 +45,11 @@ const props: Props = Astro.props;
             const left = rect.left - headerRect.left;
             const top = rect.top - headerRect.top;
 
+            console.log("Menu encontrado:", left);
+            console.log("Menu encontrado:", top);
+            console.log("Menu encontrado:", rect.width);
+            console.log("Menu encontrado:", rect.height);
+
             menu.style.setProperty("--left", `${left}px`);
             menu.style.setProperty("--top", `${top}px`);
             menu.style.setProperty("--width", `${rect.width}px`);

@@ -8,7 +8,7 @@ export interface ListProps {
 
 const { items, variant } = Astro.props as {
   items: ListProps[];
-  variant?: "default" | "alt";
+  variant?: "default" | "alt" | "third";
 };
 ---
 
@@ -19,7 +19,9 @@ const { items, variant } = Astro.props as {
       const buttonClass =
         variant === "alt"
           ? "border-2 border-white rounded-full mb-4 xl:mr-4 text-white backdrop-blur-sm hover:text-yellow-100 hover:border-yellow-100 hover:[&>a]:scale-95 active:scale-110 transition-all duration-300"
-          : "text-white";
+          : variant === "default" 
+              ? "text-white" 
+              : "text-white hover:underline";
 
       return (
         <li class={`flex ${buttonClass}`}>

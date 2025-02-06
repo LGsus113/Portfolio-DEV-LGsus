@@ -1,9 +1,12 @@
 ---
 import Tesla from "@/assets/landings/tesla-landing.webp";
+import DCoDX from "@/assets/landings/dcodx.jpg";
 
 import AstroIcon from "@/icons/astroIcon.astro";
 import TailwindIcon from "@/icons/tailwind.astro";
 import JSIcon from "@/icons/js.astro";
+import React from "@/icons/react.astro";
+import CSS from "@/icons/css.astro";
 
 const TAGS = {
   Astro: {
@@ -18,6 +21,14 @@ const TAGS = {
     name: "JavaScript",
     icon: JSIcon,
   },
+  React: {
+    name: "React",
+    icon: React,
+  },
+  Css: {
+    name: "CSS",
+    icon: CSS,
+  }
 };
 
 const PROJECTS = [
@@ -30,6 +41,16 @@ const PROJECTS = [
     image: Tesla.src,
     tags: [TAGS.Astro, TAGS.Tailwind, TAGS.JS],
     color: "text-green-300",
+  },
+  {
+    title: "D-CoDX",
+    description:
+      "Proyecto Cibertec de presentacion final de curso. Proyecto de 5to ciclo. Proyecto integrador para diseñadores y programadores.",
+    link: "#",
+    github: "https://github.com/LGsus113/D-CoDX-.-React-Vite.git",
+    image: DCoDX.src,
+    tags: [TAGS.React, TAGS.Css],
+    color: "text-yellow-200",
   },
 ];
 ---
