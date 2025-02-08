@@ -1,7 +1,9 @@
 ---
 import LGsusLogo from "@/components/Header/Components/Logo.astro";
+
 import ListNav from "@/components/utils/List-Nav.astro";
 import Hovered from "@/components/utils/Hovered.astro";
+import HamburguerMenu from "@/components/Header/Components/Hamburguer-Menu.astro";
 
 const data = [
   {
@@ -29,11 +31,18 @@ const data = [
 
 <header
   id="LGsus-Portfolio"
-  class="w-11/12 h-auto 2xl:w-[1420px] border border-white bg-green-900/[0.4] flex flex-row justify-between items-center fixed top-5 backdrop-blur-sm z-50 rounded-lg p-4 xl:rounded-2xl transition-all duration-300 ease-in-out"
+  class="w-full h-auto fixed flex items-center justify-center py-4 bg-black/[.3] backdrop-blur-sm z-50 border-b border-white"
 >
-  <LGsusLogo />
-  <nav class="mt-0 md:ml-10">
-    <ListNav items={data} variant="default" />
-  </nav>
-  <Hovered items="#LGsus-Portfolio nav li" container="#LGsus-Portfolio" />
+  <div
+    class="w-11/12 h-auto 2xl:w-[1420px] flex flex-row justify-between items-center rounded-lg xl:rounded-2xl transition-all duration-300 ease-in-out"
+  >
+    <LGsusLogo />
+    <nav class="hidden lg:block mt-0 md:ml-10">
+      <ListNav items={data} variant="default" />
+    </nav>
+    <nav class="mt-0 md:ml-10 block lg:hidden">
+      <HamburguerMenu items={data}/>
+    </nav>
+    <Hovered items="#LGsus-Portfolio nav li" container="#LGsus-Portfolio" />
+  </div>
 </header>

@@ -1,0 +1,51 @@
+---
+import MenuHamburguer from "@/icons/menuHamburguer.astro";
+import ListNav from "@/components/utils/List-Nav.astro";
+
+interface ListProps {
+  label: string;
+  href: string;
+  image: any;
+  target?: string;
+}
+
+const { items } = Astro.props as {
+  items: ListProps[];
+};
+---
+
+<ul class="relative flex items-center text-base">
+  <li class="relative">
+    <button
+      id="menu-button"
+      type="button"
+      class="inline-flex items-center justify-center p-2 w-10 h-10 text-sm text-white rounded-lg"
+      aria-controls="navbar-hamburger"
+      aria-expanded="false"
+    >
+      <span class="sr-only">Open main menu</span>
+      <MenuHamburguer class="size-5" />
+    </button>
+    <div
+      id="navbar-hamburger"
+      class="hidden absolute -left-[60px] top-[76px] w-[250px] bg-black/[0.3] text-white shadow-lg border border-white rounded-bl-md backdrop-blur-md"
+    >
+      <ListNav items={items} variant="default" />
+    </div>
+  </li>
+</ul>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const button = document.getElementById("menu-button");
+    const menu = document.getElementById("navbar-hamburger");
+
+    if (!button || !menu) return;
+
+    button.addEventListener("click", () => {
+      const isExpanded = button.getAttribute("aria-expanded") === "true";
+      button.setAttribute("aria-expanded", isExpanded ? "false" : "true");
+      menu.classList.toggle("hidden");
+    });
+  });
+</script>
