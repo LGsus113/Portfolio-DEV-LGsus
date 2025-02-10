@@ -1,0 +1,32 @@
+---
+import ListNav from "@/utils/List-Nav.astro";
+import FooterLogo from "@/components/Footer/components/Logo-Footer.astro";
+
+const buttons = [
+  {
+    label: "Experiencia",
+    href: "#experiencia",
+    image: "",
+    target: "_self",
+  },
+  {
+    label: "Proyectos",
+    href: "#proyectos",
+    image: "",
+    target: "_self",
+  },
+  {
+    label: "Contacto",
+    href: "#contactame",
+    image: "",
+    target: "_self",
+  },
+];
+---
+
+<div class="flex items-center justify-between relative">
+  <FooterLogo />
+  <nav>
+    <ListNav items={buttons} variant="third" />
+  </nav>
+</div>
