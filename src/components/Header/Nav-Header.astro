@@ -1,9 +1,10 @@
 ---
 import LGsusLogo from "@/components/Header/Components/Logo.astro";
 
-import ListNav from "@/components/utils/List-Nav.astro";
-import Hovered from "@/components/utils/Hovered.astro";
+import ContenerHidden from "@/components/Header/Components/ContenerListHidden.astro";
 import HamburguerMenu from "@/components/Header/Components/Hamburguer-Menu.astro";
+import Hovered from "@/components/utils/Hovered.astro";
+import ListNav from "@/components/utils/List-Nav.astro";
 
 const data = [
   {
@@ -26,6 +27,10 @@ const data = [
     label: "Contactame",
     href: "#contactame",
   },
+  {
+    label: "Ver CV",
+    href: "/CV",
+  },
 ];
 ---
 
@@ -41,8 +46,11 @@ const data = [
       <ListNav items={data} variant="default" />
     </nav>
     <nav class="mt-0 md:ml-10 block lg:hidden">
-      <HamburguerMenu items={data}/>
+      <HamburguerMenu items={data} />
     </nav>
     <Hovered items="#LGsus-Portfolio nav li" container="#LGsus-Portfolio" />
+  </div>
+  <div class="relative top-14 -left-[110px] md:-left-[90px]">
+    <ContenerHidden items={data} />
   </div>
 </header>

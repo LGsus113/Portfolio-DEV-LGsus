@@ -1,21 +1,9 @@
 ---
 import MenuHamburguer from "@/icons/menuHamburguer.astro";
-import ListNav from "@/components/utils/List-Nav.astro";
-
-interface ListProps {
-  label: string;
-  href: string;
-  image: any;
-  target?: string;
-}
-
-const { items } = Astro.props as {
-  items: ListProps[];
-};
 ---
 
 <ul class="relative flex items-center text-base">
-  <li class="relative">
+  <li>
     <button
       id="menu-button"
       type="button"
@@ -26,12 +14,6 @@ const { items } = Astro.props as {
       <span class="sr-only">Open main menu</span>
       <MenuHamburguer class="size-5" />
     </button>
-    <div
-      id="navbar-hamburger"
-      class="hidden absolute -left-[60px] top-[76px] w-[250px] bg-black/[0.3] text-white shadow-lg border border-white rounded-bl-md backdrop-blur-md"
-    >
-      <ListNav items={items} variant="default" />
-    </div>
   </li>
 </ul>
 
@@ -42,10 +24,22 @@ const { items } = Astro.props as {
 
     if (!button || !menu) return;
 
+    const updateMenuState = () => {
+      const isLgTailwind = window.innerWidth >= 1024;
+
+      if (isLgTailwind) {
+        button.setAttribute("aria-expanded", "false");
+        menu.classList.add("hidden");
+      }
+    };
+
     button.addEventListener("click", () => {
       const isExpanded = button.getAttribute("aria-expanded") === "true";
       button.setAttribute("aria-expanded", isExpanded ? "false" : "true");
       menu.classList.toggle("hidden");
     });
+
+    window.addEventListener("resize", updateMenuState);
+    updateMenuState();
   });
 </script>
