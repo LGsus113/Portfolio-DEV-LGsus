@@ -20,12 +20,12 @@ const data = [
     href: "#proyectos",
   },
   {
-    label: "Sobre Mí",
-    href: "#sobre-mi",
-  },
-  {
     label: "Contactame",
     href: "#contactame",
+  },
+  {
+    label: "Sobre Mí",
+    href: "#sobre-mi",
   },
   {
     label: "Ver CV",
@@ -34,23 +34,18 @@ const data = [
 ];
 ---
 
-<header
-  id="LGsus-Portfolio"
-  class="w-full h-auto fixed flex items-center justify-center py-4 bg-black/[.3] backdrop-blur-sm z-50 border-b border-white"
+<div
+  class="w-11/12 h-auto 2xl:w-[1420px] flex flex-row justify-between items-center rounded-lg xl:rounded-2xl transition-all duration-300 ease-in-out"
 >
-  <div
-    class="w-11/12 h-auto 2xl:w-[1420px] flex flex-row justify-between items-center rounded-lg xl:rounded-2xl transition-all duration-300 ease-in-out"
-  >
-    <LGsusLogo />
-    <nav class="hidden lg:block mt-0 md:ml-10">
-      <ListNav items={data} variant="default" />
-    </nav>
-    <nav class="mt-0 md:ml-10 block lg:hidden">
-      <HamburguerMenu items={data} />
-    </nav>
-    <Hovered items="#LGsus-Portfolio nav li" container="#LGsus-Portfolio" />
-  </div>
-  <div class="relative top-14 -left-[110px] md:-left-[90px]">
-    <ContenerHidden items={data} />
-  </div>
-</header>
+  <LGsusLogo />
+  <nav class="hidden lg:block mt-0 md:ml-10">
+    <ListNav items={data} variant="default" />
+  </nav>
+  <nav class="mt-0 md:ml-10 block lg:hidden">
+    <HamburguerMenu items={data} />
+  </nav>
+  <Hovered items="#LGsus-Portfolio nav li" container="#LGsus-Portfolio" />
+</div>
+<div class="relative top-14 -left-[110px] md:-left-[90px]">
+  <ContenerHidden items={data} />
+</div>

@@ -25,9 +25,20 @@ const { title, description } = Astro.props;
       class="fixed top-0 left-0 z-[-2] min-h-screen min-w-full bg-[#000000] bg-[radial-gradient(#ffffff33_1px,#00091d_1px)] bg-[size:20px_20px] overflow-hidden"
     >
     </div>
-    <slot name="header" />
-    <slot name="main" />
-    <slot name="footer" />
+    <header
+      id="LGsus-Portfolio"
+      class="w-full h-auto fixed flex items-center justify-center py-4 bg-black/[.3] backdrop-blur-sm z-50 border-b border-white"
+    >
+      <slot name="header" />
+    </header>
+    <main id="mainSection" class="w-10/12 xl:w-[1120px]">
+      <slot name="main" />
+    </main>
+    <footer
+      class="w-11/12 h-auto 2xl:w-[1420px] bg-white rounded-lg shadow-sm dark:bg-gray-900 m-4"
+    >
+      <slot name="footer" />
+    </footer>
   </body>
 </html>
 

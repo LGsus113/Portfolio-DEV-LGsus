@@ -24,21 +24,17 @@ const buttons = [
 ];
 ---
 
-<footer
-  class="w-11/12 h-auto 2xl:w-[1420px] bg-white rounded-lg shadow-sm dark:bg-gray-900 m-4"
->
-  <div class="w-full p-4">
-    <div class="flex items-center justify-between relative">
-      <FooterLogo />
-      <nav>
-        <ListNav items={buttons} variant="third" />
-      </nav>
-    </div>
-    <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-    <span class="block text-sm text-gray-500 text-center dark:text-gray-400">
-      © 2023
-      <a href="#top" class="hover:underline">LGsus™</a>
-      . All Rights Reserved.
-    </span>
+<div class="w-full p-4">
+  <div class="flex items-center justify-between relative">
+    <FooterLogo />
+    <nav>
+      <ListNav items={buttons} variant="third" />
+    </nav>
   </div>
-</footer>
+  <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+  <span class="block text-sm text-gray-500 text-center dark:text-gray-400">
+    © 2023
+    <a href="#top" class="hover:underline">LGsus™</a>
+    . All Rights Reserved.
+  </span>
+</div>
