@@ -1,0 +1,76 @@
+---
+import ItemInput from "@/components/Main/Components/Contac/Item-Input.astro";
+
+const fields = [
+  {
+    label: "Nombre",
+    type: "text" as const,
+    name: "nombre",
+    required: true,
+  },
+  {
+    label: "Correo",
+    type: "email" as const,
+    name: "correo",
+    required: true,
+  },
+  {
+    label: "Mensaje",
+    type: "textarea" as const,
+    name: "mensaje",
+    required: true,
+  },
+];
+---
+
+<div
+  class="absolute top-0 left-0 w-full h-full flex flex-col gap-10 items-center z-10 backdrop-blur-sm bg-black/[.7] p-2 md:p-5 shadow-inner shadow-white rounded-xl"
+>
+  <div class="text-center">
+    <h3 class="text-xl md:text-3xl text-yellow-300">¿Soñaste con tu web?</h3>
+    <p class="text-lg md:text-2xl text-green-200">¡Hagamoslo realidad!...</p>
+  </div>
+  <form
+    id="contact-form"
+    class="size-full border border-white rounded-lg p-4 bg-black/[.3] shadow-inner shadow-black flex flex-col gap-1 justify-between"
+  >
+    {
+      fields.map(({ label, type, name, required }) => (
+        <ItemInput label={label} type={type} name={name} required={required} />
+      ))
+    }
+
+    <div class="w-full flex justify-end items-center">
+      <button
+        type="submit"
+        class="bg-yellow-200/[.4] px-3 py-1 rounded-sm hover:text-yellow-300 active:scale-95 transition-all duration-300"
+      >
+        Enviar
+      </button>
+    </div>
+  </form>
+</div>
+
+<script>
+  document
+    .getElementById("contact-form")
+    ?.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const nombre = document.getElementById("nombre") as HTMLInputElement;
+      const correo = document.getElementById("correo") as HTMLInputElement;
+      const mensaje = document.getElementById("mensaje") as HTMLTextAreaElement;
+
+      if (!nombre || !correo || !mensaje) {
+        alert("Por favor, completa todos los campos.");
+        return;
+      }
+
+      const number = "963500322";
+      const message = `Hola Jesus Medina!%0A🗒️ *Formulario de Contacto*%0A👤 *Nombre:* ${nombre.value}%0A📨 *Correo:* ${correo.value}%0A📄 *Mensaje:*%0A ${mensaje.value}`;
+
+      const miWsp = `https://wa.me/${number}?text=${message}`;
+
+      window.open(miWsp, "_blank");
+    });
+</script>

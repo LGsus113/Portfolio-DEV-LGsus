@@ -1,6 +1,7 @@
 ---
 import SectionScheme from "@/components/utils/Section-Scheme.astro";
 import Encabezado from "@/components/utils/Encabezado.astro";
+import FormContent from "@/components/Main/Components/Contac/Form-Content.astro";
 
 import ContacIcon from "@/icons/contacIcon.astro";
 import CodeWeb from "@/assets/landings/code-web.webp";
@@ -11,7 +12,7 @@ import CodeWeb from "@/assets/landings/code-web.webp";
     <ContacIcon class="size-7 xl:size-9" />
   </Encabezado>
   <article
-    class="size-[500px] relative overflow-hidden rounded-xl border border-white shadow-lg shadow-purple-300/[.2]"
+    class="w-full h-[500px] md:size-[500px] relative overflow-hidden rounded-xl border border-white shadow-lg shadow-purple-300/[.2]"
   >
     <div class="w-full h-full flex justify-center items-center">
       <img
@@ -20,53 +21,6 @@ import CodeWeb from "@/assets/landings/code-web.webp";
         class="size-full object-cover object-center"
       />
     </div>
-    <div
-      class="absolute top-0 left-0 w-full h-full flex flex-col gap-10 items-center z-10 backdrop-blur-sm bg-black/[.7] p-5 shadow-inner shadow-white rounded-xl"
-    >
-      <div>
-        <h3 class="text-3xl text-yellow-300">¿Soñaste con tu web?</h3>
-        <p class="text-2xl text-green-200">¡Hagamoslo realidad!...</p>
-      </div>
-      <form
-        class="size-full border border-white rounded-lg p-5 bg-black/[.5] shadow-inner shadow-black [&>div]:flex [&>div]:flex-col [&>div>label]:text-green-200 [&>div>input]:p-1 [&>div>input]:text-white [&>div>input]:rounded-md flex flex-col justify-between"
-      >
-        <div>
-          <label for="nombre">Nombre:</label>
-          <input
-            type="text"
-            id="nombre"
-            name="nombre"
-            placeholder="Escribe tu nombre aquí..."
-            required
-          />
-        </div>
-
-        <div>
-          <label for="correo">Correo:</label>
-          <input
-            type="email"
-            id="correo"
-            name="correo"
-            placeholder="Escribe tu correo aquí..."
-            required
-          />
-        </div>
-
-        <div>
-          <label for="mensaje">Mensaje:</label>
-          <textarea
-            id="mensaje"
-            name="mensaje"
-            placeholder="Escribe tu mensaje aquí..."
-            class="rounded-md p-1"
-            rows="5"
-            required></textarea>
-        </div>
-
-        <div class="flex justify-center items-center">
-          <button type="submit" class="bg-purple-300/[.4] px-2 py-1 rounded-sm hover:text-black">Enviar</button>
-        </div>
-      </form>
-    </div>
+    <FormContent />
   </article>
 </SectionScheme>
