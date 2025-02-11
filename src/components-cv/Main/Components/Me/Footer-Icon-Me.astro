@@ -1,0 +1,65 @@
+---
+import LinkProfile from "@/components-cv/Main/Components/Me/Link-Profile.astro";
+
+import GitHub from "@/icons/github.astro";
+import LinkedIn from "@/icons/linkedin.astro";
+import MailIcon from "@/icons/mail.astro";
+import PhoneIcon from "@/icons/phone.astro";
+
+interface Basics {
+  name: string;
+  email: string;
+  phone: string;
+  profiles: {
+    network: string;
+    username: string;
+    url: string;
+  }[];
+}
+
+const { name, email, phone, profiles } = Astro.props as Basics;
+
+const SocialIconsMap: Record<string, any> = {
+  GitHub: GitHub,
+  LinkedIn: LinkedIn,
+};
+---
+
+<footer
+  class="flex flex-row gap-2 [&>div>a]:text-gray-900 [&>div]:size-9 [&>div]:flex [&>div]:items-center [&>div]:justify-center [&>div]:p-1 [&>div]:rounded-md [&>div]:border [&>div]:border-gray-900 [&>div]:opacity-50 [&>div]:transition-all [&>div]:duration-200"
+>
+  {
+    profiles.map(({ network, url }) => {
+      const Icon = SocialIconsMap[network];
+
+      return (
+        <LinkProfile
+          title={`Visitar el perfil de ${name} en ${network}`}
+          url={url}
+        >
+          <Icon class="size-5" />
+        </LinkProfile>
+      );
+    })
+  }
+  {
+    email && (
+      <LinkProfile
+        title={`Envia un mail a ${name} al correo ${email}`}
+        url={`mailto:${email}`}
+      >
+        <MailIcon class="size-5 current-color" />
+      </LinkProfile>
+    )
+  }
+  {
+    phone && (
+      <LinkProfile
+        title={`Llama a ${name} al telefono ${phone}`}
+        url={`tel:${phone}`}
+      >
+        <PhoneIcon class="size-5 current-color" />
+      </LinkProfile>
+    )
+  }
+</footer>

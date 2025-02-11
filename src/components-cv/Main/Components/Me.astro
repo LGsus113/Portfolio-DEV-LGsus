@@ -1,0 +1,52 @@
+---
+import FooterIconMe from "@/components-cv/Main/Components/Me/Footer-Icon-Me.astro";
+import HeaderMe from "@/components-cv/Main/Components/Me/Header-Me.astro";
+import MainMe from "@/components-cv/Main/Components/Me/Main-Me.astro";
+import SectionScheme from "@/utils/Section-Scheme.astro";
+
+import { basics } from "@cv";
+
+interface Profile {
+  network: string;
+  username: string;
+  url: string;
+}
+
+interface Basics {
+  name: string;
+  label: string;
+  image: string;
+  email: string;
+  phone: string;
+  url: string;
+  summary: string;
+  location: {
+    address: string;
+    postalCode: string;
+    city: string;
+    countryCode: string;
+    region: string;
+  };
+  profiles: Profile[];
+}
+
+const { name, label, image, email, phone, location, profiles } =
+  basics as Basics;
+
+const { city, region } = location;
+---
+
+<SectionScheme id="" className="p-10">
+  <div class="w-full h-auto flex flex-row items-center gap-40 text-gray-900">
+    <article class="w-2/3 h-auto flex flex-col gap-2">
+      <HeaderMe name={name} label={label} city={city} region={region} />
+      <FooterIconMe
+        name={name}
+        email={email}
+        phone={phone}
+        profiles={profiles}
+      />
+    </article>
+    <MainMe name={name} image={image} />
+  </div>
+</SectionScheme>

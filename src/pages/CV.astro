@@ -1,8 +1,12 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import MainCV from "@/components-cv/Main/Main-CV.astro";
 import Footer from "@/components-cv/Footer/Footer.astro";
+import BGCV from "@/backgrounds/BG-CV.astro";
 ---
 
 <Layout title="CV de LGsus" description="Ver y descargar cv de LGsus">
+  <BGCV slot={"background"} />
+  <MainCV slot={"main"} />
   <Footer slot={"footer"} />
 </Layout>

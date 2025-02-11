@@ -1,0 +1,21 @@
+---
+import UbicationIcon from "@/icons/ubication.astro";
+
+interface Basics {
+  name: string;
+  label: string;
+  city: string;
+  region: string;
+}
+
+const { name, label, city, region } = Astro.props as Basics;
+---
+
+<header class="flex flex-col gap-2">
+  <h1 class="text-2xl font-bold">{name}</h1>
+  <h2 class="text-md">{label}</h2>
+  <span class="text-lg flex items-center justify-start gap-2">
+    <UbicationIcon class="size-5" />
+    {city}, {region}
+  </span>
+</header>
