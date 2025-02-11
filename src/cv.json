@@ -2,7 +2,7 @@
   "basics": {
     "name": "Jesús Medina Lázaro",
     "label": "Full Stack Developer interesado en proyectos donde pueda aprender y mejorar mis conocimientos.",
-    "image": "https://glittering-cactus-664923.netlify.app/_astro/download.B8P0lOX4.webp",
+    "image": "@public/download.webp",
     "email": "john@gmail.com",
     "phone": "(912) 555-4321",
     "url": "mailto:lgsustm@gmail.com?subject=Hola!!&body=Quisiera contactarme contigo para un proyecto :).",
