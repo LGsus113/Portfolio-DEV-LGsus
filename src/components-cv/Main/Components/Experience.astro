@@ -2,6 +2,7 @@
 import SectionScheme from "@/utils/Section-Scheme.astro";
 import ItemExperience from "@/utils/Item-WSVA.astro";
 
+import { formatYears } from "@/assets/js/Format-Time";
 import { work } from "@cv";
 
 interface WorkExperience {
@@ -24,10 +25,7 @@ const workExperience: WorkExperience[] = work;
   <div class="text-gray-900 list-none flex flex-col gap-4">
     {
       workExperience.map(({ name, startDate, endDate, summary, position }) => {
-        const startYear = new Date(startDate).getFullYear();
-        const endYear =
-          endDate !== null ? new Date(endDate).getFullYear() : "Actual";
-        const years = `${startYear} - ${endYear}`;
+        const years = formatYears(startDate, endDate);
 
         return (
           <ItemExperience

@@ -2,6 +2,7 @@
 import SectionScheme from "@/utils/Section-Scheme.astro";
 import ItemExperience from "@/utils/Item-WSVA.astro";
 
+import { formatYears } from "@/assets/js/Format-Time";
 import { education } from "@cv";
 
 interface EducationSchool {
@@ -25,10 +26,7 @@ const educationS: EducationSchool[] = education;
     {
       educationS.map(
         ({ institution, area, studyType, startDate, endDate, courses }) => {
-          const startYear = new Date(startDate).getFullYear();
-          const endYear =
-            endDate !== null ? new Date(endDate).getFullYear() : "Actual";
-          const years = `${startYear} - ${endYear}`;
+          const years = formatYears(startDate, endDate);
 
           return (
             <div class="flex flex-col gap-5 list-none">
