@@ -6,7 +6,17 @@
     "email": "john@gmail.com",
     "phone": "(912) 555-4321",
     "url": "mailto:lgsustm@gmail.com?subject=Hola!!&body=Quisiera contactarme contigo para un proyecto :).",
-    "summary": "A summary of John Doe…",
+    "summaries": [
+      {
+        "text": "Mi nombre real es 'Jesus Medina', pero me dicen 'Yisus', de ahí mi marca y logo'LGsus'. Soy programador full stack, con 1 año de experiencia en proyectos de estudio."
+      },
+      {
+        "text": "A día de hoy estudio para aprender mas de lo que gusta hacer. '¿Como llegué a programar?' Buena pregunta, todo comenzó cuando empecé mis estudios."
+      },
+      {
+        "text": "No supe que era lo que quería, hasta que conocí la programacion, 'me gustó mucho desde el principio'; recuerdo que comencé con 'Java', haciendo una calculadora. Ya actualmente manejo otras formas de programar, y 'me gustan mucho los frameworks de desarrollo frontend', aunque si tengo demasiado interés en ampliar mi conocimiento en 'backend'."
+      }
+    ],
     "location": {
       "address": "",
       "postalCode": "",
@@ -29,13 +39,49 @@
   },
   "work": [
     {
-      "name": "Company",
-      "position": "President",
-      "url": "https://company.com",
-      "startDate": "2013-01-01",
-      "endDate": "2014-01-01",
-      "summary": "Description…",
-      "highlights": ["Started the company"]
+      "name": "Tesla",
+      "position": "Estudiante",
+      "url": "https://github.com/LGsus113/Tesla-Page-Astro.git",
+      "startDate": "2024-12-15",
+      "endDate": "2024-12-30",
+      "summary": "Clon de pagina antigua de Tesla con Astro, Tailwind y JS. Proyecto con fines educativos, para la practica y mejora del framework utilzado.",
+      "highlights": "latest Astro"
+    },
+    {
+      "name": "DAWI: Spring Boot",
+      "position": "Estudiante",
+      "url": "https://github.com/LGsus113/ProyectoDawi.git",
+      "startDate": "2024-10-15",
+      "endDate": "2024-12-30",
+      "summary": "Proyecto de presentacion final para curso, 5to ciclo. Sistema de Ventas en spring boot con templates de prueba.",
+      "highlights": "latest Java"
+    },
+    {
+      "name": "D-CoDX",
+      "position": "Estudiante",
+      "url": "https://github.com/LGsus113/D-CoDX-.-React-Vite.git",
+      "startDate": "2024-11-23",
+      "endDate": "2024-12-1",
+      "summary": "Proyecto de presentacion final para curso, 5to ciclo. Continuación de pagina D-CoDX, versión ReactJS.",
+      "highlights": "latest React"
+    },
+    {
+      "name": "D-CoDX",
+      "position": "Estudiante",
+      "url": "https://github.com/LGsus113/D-CoDX.git",
+      "startDate": "2023-12-10",
+      "endDate": "2024-04-16",
+      "summary": "Proyecto de presentacion final para curso, 4to ciclo. Pagina creada como proyecto integrador para diseñadores y programadores.",
+      "highlights": "latest HTML"
+    },
+    {
+      "name": "SMV: Inventario",
+      "position": "Estudiante",
+      "url": "https://github.com/LGsus113/D-CoDX.git",
+      "startDate": "2023-04-13",
+      "endDate": "2024-06-08",
+      "summary": "Proyecto de 4to cibertec. Incluye Backend con Java Srping Boot y Frontend con React. Proyecto de Inventario y baja de productos de almacen para la SMV.",
+      "highlights": "latest React - Spring Boot"
     }
   ],
   "volunteer": [
@@ -51,14 +97,21 @@
   ],
   "education": [
     {
-      "institution": "University",
-      "url": "https://institution.com/",
-      "area": "Software Development",
-      "studyType": "Bachelor",
-      "startDate": "2011-01-01",
-      "endDate": "2013-01-01",
-      "score": "4.0",
-      "courses": ["DB1101 - Basic SQL"]
+      "institution": "Cibertec",
+      "url": "#",
+      "area": "Computación e Informatica, computación y sistemas, desarrollo de aplicaciones y gestor de base de datos.",
+      "studyType": "Tecnico Superior",
+      "startDate": "2022-06-07",
+      "endDate": null,
+      "score": "18",
+      "courses": [
+        "Base de Datos - SQL",
+        "Base de Datos - No SQL",
+        "Desarrollo Web",
+        "POO",
+        "Diseño de Sistemas",
+        "Lenguaje de Programación"
+      ]
     }
   ],
   "awards": [
@@ -88,9 +141,44 @@
   ],
   "skills": [
     {
-      "name": "Web Development",
-      "level": "Master",
-      "keywords": ["HTML", "CSS", "JavaScript"]
+      "name": "HTML",
+      "level": "Master"
+    },
+    {
+      "name": "CSS",
+      "level": "Advanced"
+    },
+    {
+      "name": "JavaScript",
+      "level": "Advanced"
+    },
+    {
+      "name": "React",
+      "level": "Master"
+    },
+    {
+      "name": "Astro",
+      "level": "Advanced"
+    },
+    {
+      "name": "Java",
+      "level": "Advanced"
+    },
+    {
+      "name": "Spring Boot",
+      "level": "Advanced"
+    },
+    {
+      "name": "SQL Server",
+      "level": "Advanced"
+    },
+    {
+      "name": "MySQL",
+      "level": "Advanced"
+    },
+    {
+      "name": "NoSQL",
+      "level": "Advanced"
     }
   ],
   "languages": [

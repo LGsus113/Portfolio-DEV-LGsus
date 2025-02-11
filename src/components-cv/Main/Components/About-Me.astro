@@ -1,0 +1,33 @@
+---
+import SectionScheme from "@/utils/Section-Scheme.astro";
+import TextUse from "@/utils/Text-Use.astro";
+
+import { basics } from "@cv";
+
+interface Summarie {
+  text: string;
+}
+
+interface Basics {
+  summaries: Summarie[];
+}
+
+const { summaries } = basics as Basics;
+---
+
+<SectionScheme id="" className="pb-10 gap-4">
+  <header>
+    <h1 class="text-2xl text-black font-bold">Sobre mí</h1>
+  </header>
+  <div class="flex flex-col gap-2">
+    {
+      summaries.map(({ text }) => (
+        <TextUse
+          description={text}
+          className="text-gray-900 text-md"
+          cv={true}
+        />
+      ))
+    }
+  </div>
+</SectionScheme>

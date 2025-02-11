@@ -19,7 +19,6 @@ interface Basics {
   email: string;
   phone: string;
   url: string;
-  summary: string;
   location: {
     address: string;
     postalCode: string;
@@ -37,8 +36,8 @@ const { city, region } = location;
 ---
 
 <SectionScheme id="" className="p-10">
-  <div class="w-full h-auto flex flex-row items-center gap-40 text-gray-900">
-    <article class="w-2/3 h-auto flex flex-col gap-2">
+  <div class="w-full h-auto flex flex-col md:flex-row items-center gap-10 md:gap-40 text-gray-900">
+    <article class="w-full md:w-2/3 h-auto flex flex-col items-center md:items-start gap-2">
       <HeaderMe name={name} label={label} city={city} region={region} />
       <FooterIconMe
         name={name}

@@ -2,14 +2,15 @@
 interface Props {
   description: string;
   className: string;
+  cv: boolean;
 }
 
-const { description, className } = Astro.props;
+const { description, className, cv } = Astro.props;
 
 const highlightText = (text: string) => {
   return text.replace(
     /'([^']+)'/g,
-    "<span class='text-yellow-200/[.7] font-bold'>$1</span>"
+    `<span class='${cv ? "text-black" : "text-yellow-200/[.7]"} font-bold'>$1</span>`
   );
 };
 ---

@@ -1,0 +1,27 @@
+---
+import SectionScheme from "@/utils/Section-Scheme.astro";
+
+import { skills } from "@cv";
+
+interface Skill {
+  name: string;
+  level: string;
+}
+
+const skillsTyped: Skill[] = skills;
+---
+
+<SectionScheme id="" className="pb-16 gap-4">
+  <header>
+    <h1 class="text-2xl text-black font-bold">Conocimientos</h1>
+  </header>
+  <ul class="text-gray-900 font-semibold flex-wrap inline-flex gap-2">
+    {
+      skillsTyped.map(({ name }) => (
+        <li class="rounded-lg bg-gray-300 px-2 py-1 opacity-70 hover:opacity-100 transition-all duration-200 cursor-pointer">
+          <span>{name}</span>
+        </li>
+      ))
+    }
+  </ul>
+</SectionScheme>

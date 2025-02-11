@@ -1,0 +1,25 @@
+---
+interface Props {
+  name: string;
+  position: string;
+  years: string;
+  summary: string;
+}
+
+const { name, position, years, summary } = Astro.props;
+---
+
+<li>
+  <article class="flex flex-col gap-1">
+    <header class="flex items-center justify-between">
+      <div class="flex flex-col gap-1">
+        <h3 class="text-lg font-semibold text-black">{name}</h3>
+        <h4 class="text-md text-black">{position}</h4>
+      </div>
+      <time class="text-lg text-black font-semibold">{years}</time>
+    </header>
+    <footer>
+      <p class="text-md text-gray-900">{summary}</p>
+    </footer>
+  </article>
+</li>

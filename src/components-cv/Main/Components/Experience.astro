@@ -1,0 +1,43 @@
+---
+import SectionScheme from "@/utils/Section-Scheme.astro";
+import ItemExperience from "@/utils/Item-WSVA.astro";
+
+import { work } from "@cv";
+
+interface WorkExperience {
+  name: string;
+  position: string;
+  url: string;
+  startDate: string;
+  endDate: string | null;
+  summary: string;
+  highlights: string;
+}
+
+const workExperience: WorkExperience[] = work;
+---
+
+<SectionScheme id="" className="pb-16 gap-4">
+  <header>
+    <h1 class="text-2xl text-black font-bold">Experiencia</h1>
+  </header>
+  <div class="text-gray-900 list-none flex flex-col gap-4">
+    {
+      workExperience.map(({ name, startDate, endDate, summary, position }) => {
+        const startYear = new Date(startDate).getFullYear();
+        const endYear =
+          endDate !== null ? new Date(endDate).getFullYear() : "Actual";
+        const years = `${startYear} - ${endYear}`;
+
+        return (
+          <ItemExperience
+            name={name}
+            position={position}
+            years={years}
+            summary={summary}
+          />
+        );
+      })
+    }
+  </div>
+</SectionScheme>

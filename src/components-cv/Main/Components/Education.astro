@@ -1,0 +1,56 @@
+---
+import SectionScheme from "@/utils/Section-Scheme.astro";
+import ItemExperience from "@/utils/Item-WSVA.astro";
+
+import { education } from "@cv";
+
+interface EducationSchool {
+  institution: string;
+  area: string;
+  url: string;
+  studyType: string;
+  startDate: string;
+  endDate: string | null;
+  courses: string[];
+}
+
+const educationS: EducationSchool[] = education;
+---
+
+<SectionScheme id="" className="pb-16">
+  <header>
+    <h1 class="text-2xl text-black font-bold">Estudios</h1>
+  </header>
+  <div>
+    {
+      educationS.map(
+        ({ institution, area, studyType, startDate, endDate, courses }) => {
+          const startYear = new Date(startDate).getFullYear();
+          const endYear =
+            endDate !== null ? new Date(endDate).getFullYear() : "Actual";
+          const years = `${startYear} - ${endYear}`;
+
+          return (
+            <div class="flex flex-col gap-5 list-none">
+              <ItemExperience
+                name={institution}
+                position={studyType}
+                years={years}
+                summary={area}
+              />
+              <div class="flex flex-wrap justify-between gap-3 text-gray-900">
+                {
+                  courses.map((course) => (
+                    <div class="w-auto h-auto flex-grow px-2 py-1 items-center justify-center text-center font-semibold border border-gray-900 rounded-full opacity-70 hover:opacity-100 cursor-pointer transition-all duration-200">
+                      <p>{course}</p>
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+          );
+        }
+      )
+    }
+  </div>
+</SectionScheme>
