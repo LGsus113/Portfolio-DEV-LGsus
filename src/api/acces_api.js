@@ -1,6 +1,7 @@
 const token = import.meta.env.VITE_ACCES_TOKEN;
 
 export const getRepos = async () => {
+  console.log(token);
   try {
     const response = await fetch("https://api.github.com/user/repos", {
       headers: {
