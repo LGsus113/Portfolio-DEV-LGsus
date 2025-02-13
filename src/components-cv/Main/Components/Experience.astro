@@ -3,7 +3,25 @@ import SectionScheme from "@/utils/Section-Scheme.astro";
 import ItemExperience from "@/utils/Item-WSVA.astro";
 
 import { formatYears } from "@/assets/js/Format-Time";
+import { getRepos } from "@/api/acces_api";
 import { work } from "@cv";
+
+const developer = await getRepos().then((repos) => {
+  return repos.map((res: any) => {
+    const startDate = res.startDate;
+    const endDate = res.endDate || null;
+
+    const date = formatYears(startDate, endDate);
+
+    return {
+      title: res.name || "Título no disponible",
+      date: date,
+      description: res.summary || "Descripción no disponible",
+      download: res.url || "URL no disponible",
+      badge: "latest " + res.highlights || "Sin destacados",
+    };
+  });
+});
 
 interface WorkExperience {
   name: string;
@@ -24,18 +42,14 @@ const workExperience: WorkExperience[] = work;
   </header>
   <div class="text-gray-900 list-none flex flex-col gap-4">
     {
-      workExperience.map(({ name, startDate, endDate, summary, position }) => {
-        const years = formatYears(startDate, endDate);
-
-        return (
-          <ItemExperience
-            name={name}
-            position={position}
-            years={years}
-            summary={summary}
-          />
-        );
-      })
+      developer.map((dev: any) => (
+        <ItemExperience
+          name={dev.title}
+          position="Programador"
+          years={dev.date}
+          summary={dev.description}
+        />
+      ))
     }
   </div>
 </SectionScheme>
