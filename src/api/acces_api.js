@@ -102,7 +102,7 @@ export const getRepos = async (forceUpdate = false) => {
   const hasUpdates = await actividadReciente();
 
   if (hasUpdates) {
-    console.log("🚀 Se detectaron cambios en GitHub. Actualizando datos...");
+    console.log("🚀 Se detectaron cambios en GitHub. Actualizando datos!!...");
     const repos = await fetchAndFilterRepos();
     lastFetchTime = Date.now();
     return repos;
