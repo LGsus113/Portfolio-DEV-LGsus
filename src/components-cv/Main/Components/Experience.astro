@@ -4,7 +4,6 @@ import ItemExperience from "@/utils/Item-WSVA.astro";
 
 import { formatYears } from "@/assets/js/Format-Time";
 import { getRepos } from "@/api/acces_api";
-import { work } from "@cv";
 
 const developer = await getRepos().then((repos) => {
   return repos.map((res: any) => {
@@ -22,18 +21,6 @@ const developer = await getRepos().then((repos) => {
     };
   });
 });
-
-interface WorkExperience {
-  name: string;
-  position: string;
-  url: string;
-  startDate: string;
-  endDate: string | null;
-  summary: string;
-  highlights: string;
-}
-
-const workExperience: WorkExperience[] = work;
 ---
 
 <SectionScheme id="" className="pb-16 gap-4">

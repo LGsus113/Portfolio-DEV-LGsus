@@ -1,6 +1,10 @@
 const token = import.meta.env.VITE_ACCES_TOKEN;
 
-export const getRepos = async () => {
+let cachedRepos = null;
+let lastFetchTime = 0;
+const CACHE_DURATION = 24 * 60 * 60 * 1000;
+
+const fetchAndFilterRepos = async () => {
   try {
     const response = await fetch("https://api.github.com/user/repos", {
       headers: {
@@ -32,6 +36,9 @@ export const getRepos = async () => {
         visibility: repo.visibility,
       }));
 
+    cachedRepos = filteredRepos;
+    lastFetchTime = Date.now();
+
     return filteredRepos;
   } catch (error) {
     console.log(
@@ -40,4 +47,15 @@ export const getRepos = async () => {
     );
     return [];
   }
+};
+
+export const getRepos = async () => {
+  const currentTime = Date.now();
+
+  if (cachedRepos && currentTime - lastFetchTime < CACHE_DURATION) {
+    console.log("✅ Using cached GitHub data");
+    return cachedRepos;
+  }
+
+  return await fetchAndFilterRepos();
 };
