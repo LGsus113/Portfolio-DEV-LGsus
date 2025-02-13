@@ -5,10 +5,29 @@ import Encabezado from "@/utils/Encabezado.astro";
 import ExperienceType from "@/components/Main/Components/Experience/Experience-Type.astro";
 import SectionScheme from "@/utils/Section-Scheme.astro";
 
+import { formatYears } from "@/assets/js/Format-Time";
+import { getRepos } from "@/api/acces_api";
+
 import ExperienceIcon from "@/icons/experience.astro";
 
-const experiences = await getCollection("experiences");
+const developer = await getRepos().then((repos) => {
+  return repos.map((res: any) => {
+    const startDate = res.startDate;
+    const endDate = res.endDate || null;
 
+    const date = formatYears(startDate, endDate);
+
+    return {
+      title: res.name || "Título no disponible",
+      date: date,
+      description: res.summary || "Descripción no disponible",
+      download: res.url || "URL no disponible",
+      badge: "latest " + res.highlights || "Sin destacados",
+    };
+  });
+});
+
+const experiences = await getCollection("experiences");
 const atteClient = experiences.filter(
   ({ data }: any) => data.type === "AtteClient"
 );
@@ -16,52 +35,11 @@ const technical = experiences.filter(
   ({ data }: any) => data.type === "Technical"
 );
 
-const EXPERIENCES2 = [
+const EXPERIENCES = [
   {
     title: "Como desarrollador:",
     color: "green",
-    items: [
-      {
-        title: "Tesla",
-        date: "Actualmente...",
-        description:
-          "Clon de pagina antigua de Tesla con Astro, Tailwind y JS. Proyecto con fines educativos, para la practica y mejora del framework utilzado.",
-        download: "https://github.com/LGsus113/Tesla-Page-Astro.git",
-        badge: "latest Astro",
-      },
-      {
-        title: "DAWI: Spring Boot",
-        date: "Diciembre 22, 2024",
-        description:
-          "Proyecto de presentacion final para curso, 5to ciclo. Sistema de Ventas en spring boot con templates de prueba.",
-        download: "https://github.com/LGsus113/ProyectoDawi.git",
-        badge: "latest Java",
-      },
-      {
-        title: "D-CoDX",
-        date: "Diciembre 1, 2024",
-        description:
-          "Proyecto de presentacion final para curso, 5to ciclo. Continuación de pagina D-CoDX, en esta versión se usa ReactJS.",
-        download: "https://github.com/LGsus113/D-CoDX-.-React-Vite.git",
-        badge: "latest React",
-      },
-      {
-        title: "D-CoDX",
-        date: "Noviembre 28, 2024",
-        description:
-          "Proyecto de presentacion final para curso, 4to ciclo. Pagina creada como proyecto integrador para diseñadores y programadores.",
-        download: "https://github.com/LGsus113/D-CoDX.git",
-        badge: "latest HTML",
-      },
-      {
-        title: "SMV: Inventario",
-        date: "Julio 13, 2024",
-        description:
-          "Proyecto de 4to cibertec. Incluye Backend con Java Srping Boot y Frontend con React. Proyecto de Inventario y baja de productos de almacen para la SMV.",
-        download: "https://github.com/LGsus113/SMV.git",
-        badge: "latest React - Spring Boot",
-      },
-    ],
+    items: developer,
   },
   {
     title: "En atención al cliente:",
@@ -96,7 +74,7 @@ const EXPERIENCES2 = [
     class="w-full grid grid-cols-1 grid-rows-auto lg:grid-cols-2 lg:grid-rows-2 gap-5"
   >
     {
-      EXPERIENCES2.map(({ title, color, items }, index) => (
+      EXPERIENCES.map(({ title, color, items }, index) => (
         <ExperienceType
           title={title}
           color={color}
