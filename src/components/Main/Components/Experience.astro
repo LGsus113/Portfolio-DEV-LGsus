@@ -12,8 +12,8 @@ import ExperienceIcon from "@/icons/experience.astro";
 
 const developer = await getRepos().then((repos) => {
   return repos.map((res: any) => {
-    const startDate = res.startDate;
-    const endDate = res.endDate || null;
+    const startDate = res.created_at;
+    const endDate = res.pushed_at || null;
 
     const date = formatYears(startDate, endDate);
 
