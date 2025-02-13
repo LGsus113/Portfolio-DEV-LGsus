@@ -3,12 +3,13 @@ const GITHUB_USERNAME = "LGsus113";
 
 let cachedRepos = null;
 let lastFetchTime = 0;
-const CACHE_DURATION = 24 * 60 * 60 * 1000;
+const CACHE_DURATION = 60 * 60 * 1000;
+const POLLING_INTERVAL = 1 * 60 * 1000;
 
 const actividadReciente = async () => {
   try {
     const response = await fetch(
-      `https://api.github.com/users/${GITHUB_USERNAME}/events`,
+      `https://api.github.com/users/${GITHUB_USERNAME}/repos`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -17,17 +18,24 @@ const actividadReciente = async () => {
       }
     );
 
-    const events = await response.json();
+    const repos = await response.json();
 
-    if (!Array.isArray(events) || events.length === 0) {
-      console.log("❌ No hay eventos recientes.");
+    if (!Array.isArray(repos) || repos.length === 0) {
+      console.log("❌ No se encontraron repositorios.");
       return false;
     }
 
-    const lastEventTime = new Date(events[0].created_at).getTime();
-    console.log("✅ Último evento en GitHub:", new Date(lastEventTime));
+    const hasRecentChanges = repos.some(
+      (repo) => new Date(repo.updated_at).getTime() > lastFetchTime
+    );
 
-    return lastEventTime > lastFetchTime;
+    if (hasRecentChanges) {
+      console.log("✅ Se detectaron cambios recientes en los repositorios.");
+      return true;
+    }
+
+    console.log("❌ No hay cambios recientes en los repositorios.");
+    return false;
   } catch (error) {
     console.log("❌ Error verificando actividad reciente:", error);
     return false;
@@ -67,10 +75,9 @@ const fetchAndFilterRepos = async () => {
       }));
 
     cachedRepos = filteredRepos;
-    lastFetchTime = Date.now(); // ✅ Aseguramos que el caché refleje el nuevo fetch
+    lastFetchTime = Date.now();
 
     console.log("🔄 Datos actualizados desde GitHub.");
-
     return filteredRepos;
   } catch (error) {
     console.log("❌ Error obteniendo los datos del repositorio:", error);
@@ -78,22 +85,38 @@ const fetchAndFilterRepos = async () => {
   }
 };
 
-export const getRepos = async () => {
+export const getRepos = async (forceUpdate = false) => {
   const currentTime = Date.now();
 
-  // 🚀 Verificamos si hay eventos recientes antes de usar el caché
+  if (
+    forceUpdate ||
+    !cachedRepos ||
+    currentTime - lastFetchTime > CACHE_DURATION
+  ) {
+    console.log("🚀 Forzando actualización de datos...");
+    const repos = await fetchAndFilterRepos();
+    lastFetchTime = Date.now();
+    return repos;
+  }
+
   const hasUpdates = await actividadReciente();
+
   if (hasUpdates) {
     console.log("🚀 Se detectaron cambios en GitHub. Actualizando datos...");
-    return await fetchAndFilterRepos();
+    const repos = await fetchAndFilterRepos();
+    lastFetchTime = Date.now();
+    return repos;
   }
 
-  // ✅ Si no hay cambios recientes, verificamos el tiempo de caché
-  if (cachedRepos && currentTime - lastFetchTime < CACHE_DURATION) {
-    console.log("✅ Usando caché de GitHub...");
-    return cachedRepos;
-  }
-
-  console.log("🔄 Caché vencido o no disponible. Obteniendo nuevos datos...");
-  return await fetchAndFilterRepos();
+  console.log("✅ Usando caché de GitHub.");
+  return cachedRepos;
 };
+
+const startPolling = () => {
+  setInterval(async () => {
+    console.log("🔄 Verificando cambios en GitHub...");
+    await getRepos();
+  }, POLLING_INTERVAL);
+};
+
+startPolling();
