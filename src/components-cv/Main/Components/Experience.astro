@@ -15,9 +15,9 @@ const developer = await getRepos().then((repos) => {
     return {
       title: res.name || "Título no disponible",
       date: date,
-      description: res.summary || "Descripción no disponible",
-      download: res.url || "URL no disponible",
-      badge: "latest " + res.highlights || "Sin destacados",
+      description: res.description || "Descripción no disponible",
+      download: res.html_url || "URL no disponible",
+      badge: "latest " + res.language || "Sin destacados",
     };
   });
 });
