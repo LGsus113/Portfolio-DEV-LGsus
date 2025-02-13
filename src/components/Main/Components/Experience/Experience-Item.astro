@@ -7,14 +7,14 @@ import Badge2 from "@/utils/Badge-2.astro";
 
 interface Props {
   title: string;
-  description: string;
   date: string;
+  description: string;
   download: string;
   badge: string;
   color: string;
 }
 
-const { title, description, date, download, badge, color } = Astro.props;
+const { title, date, description, download, badge, color } = Astro.props;
 
 const colorClasses: Record<
   "green" | "purple" | "yellow",

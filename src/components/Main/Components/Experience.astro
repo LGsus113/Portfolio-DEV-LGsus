@@ -1,11 +1,22 @@
 ---
+import { getCollection } from "astro:content";
+
 import Encabezado from "@/utils/Encabezado.astro";
 import ExperienceType from "@/components/Main/Components/Experience/Experience-Type.astro";
 import SectionScheme from "@/utils/Section-Scheme.astro";
 
 import ExperienceIcon from "@/icons/experience.astro";
 
-const EXPERIENCES = [
+const experiences = await getCollection("experiences");
+
+const atteClient = experiences.filter(
+  ({ data }: any) => data.type === "AtteClient"
+);
+const technical = experiences.filter(
+  ({ data }: any) => data.type === "Technical"
+);
+
+const EXPERIENCES2 = [
   {
     title: "Como desarrollador:",
     color: "green",
@@ -55,54 +66,24 @@ const EXPERIENCES = [
   {
     title: "En atención al cliente:",
     color: "yellow",
-    items: [
-      {
-        title: "Restaurante Don Maco",
-        date: "Junio, 2023 - Julio, 2024",
-        description:
-          "Servicio de atencion como mozo en resturant campestre Don Maco - Simbal, Trujillo.",
-        download: "",
-        badge: "Mozo",
-      },
-      {
-        title: "BiciStart SAC",
-        date: "Noviembre, 2019 - Febrero, 2021",
-        description:
-          "Vendedor en tienda de bicicletas y articulos de entretenimiento para niños.",
-        download: "",
-        badge: "Vendedor",
-      },
-      {
-        title: "PC Lista",
-        date: "Marzo, 2019 - Setiembre, 2019",
-        description:
-          "Servicio de vendedor de computadoras y articulos tecnologicos.",
-        download: "",
-        badge: "Vendedor",
-      },
-    ],
+    items: atteClient.map(({ data }: any) => ({
+      title: data.title,
+      date: data.date,
+      description: data.description,
+      download: data.download || "",
+      badge: data.badge,
+    })),
   },
   {
     title: "Como técnico ensamblador:",
     color: "purple",
-    items: [
-      {
-        title: "BiciStart SAC",
-        date: "Febrero, 2021 - Mayo, 2022",
-        description:
-          "Cambio de rol en tienda: vendedor a ensamblador de bicicletas. Verificación de calidad y servicio de mantenimiento de todo tipo de bicicletas: Gama Alta - Gama Baja.",
-        download: "",
-        badge: "Ensamblador",
-      },
-      {
-        title: "Bicimotos El Lider",
-        date: "Mayo, 2022 - Junio - 2023",
-        description:
-          "Servicio de ensamblado de Bicicletas para la venta masiva, bicicletas de uso cotidiano y mantenimientos de las mismas. Responsable del estado de salida de las bicicletas y consultor de mercaderia nueva para la tienda.",
-        download: "",
-        badge: "Tecnico",
-      },
-    ],
+    items: technical.map(({ data }: any) => ({
+      title: data.title,
+      date: data.date,
+      description: data.description,
+      download: data.download || "",
+      badge: data.badge,
+    })),
   },
 ];
 ---
@@ -115,7 +96,7 @@ const EXPERIENCES = [
     class="w-full grid grid-cols-1 grid-rows-auto lg:grid-cols-2 lg:grid-rows-2 gap-5"
   >
     {
-      EXPERIENCES.map(({ title, color, items }, index) => (
+      EXPERIENCES2.map(({ title, color, items }, index) => (
         <ExperienceType
           title={title}
           color={color}
