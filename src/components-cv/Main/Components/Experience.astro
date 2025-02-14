@@ -3,9 +3,9 @@ import SectionScheme from "@/utils/Section-Scheme.astro";
 import ItemExperience from "@/utils/Item-WSVA.astro";
 
 import { formatYears } from "@/assets/js/Format-Time";
-import { getRepos } from "@/api/acces_api";
+import { fetchRepos } from "@/api/acces_api";
 
-const developer = await getRepos().then((repos) => {
+const developer = await fetchRepos().then((repos) => {
   return repos.map((res: any) => {
     const startDate = res.created_at;
     const endDate = res.pushed_at || null;
