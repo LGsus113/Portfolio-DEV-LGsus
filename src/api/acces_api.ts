@@ -24,7 +24,7 @@ type Repo = {
 const fetchAndFilterRepos = async (): Promise<Repo[]> => {
   try {
     const response = await fetch(
-      "https://api.github.com/user/repos",
+      `https://api.github.com/user/repos?timestamp=${Date.now()}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
