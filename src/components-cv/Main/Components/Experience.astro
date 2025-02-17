@@ -1,4 +1,6 @@
 ---
+import { getCollection } from "astro:content";
+
 import SectionScheme from "@/utils/Section-Scheme.astro";
 import ItemExperience from "@/utils/Item-WSVA.astro";
 
@@ -21,6 +23,16 @@ const developer = await fetchRepos().then((repos) => {
     };
   });
 });
+
+const experiences = await getCollection("experiences");
+const atteClient = experiences.filter(
+  ({ data }: any) => data.type === "AtteClient"
+);
+const technical = experiences.filter(
+  ({ data }: any) => data.type === "Technical"
+);
+
+const titleClass = "mt-2 text-lg md:text-xl font-semibold text-black"
 ---
 
 <SectionScheme id="" className="pb-10 gap-4">
@@ -28,6 +40,7 @@ const developer = await fetchRepos().then((repos) => {
     <h1 class="text-2xl text-black font-bold">Experiencia</h1>
   </header>
   <div class="text-gray-900 list-none flex flex-col gap-4">
+    <h1 class="mt-2 text-xl font-semibold text-black">- Software:</h1>
     {
       developer.map((dev: any) => (
         <ItemExperience
@@ -35,6 +48,28 @@ const developer = await fetchRepos().then((repos) => {
           position="Programador"
           years={dev.date}
           summary={dev.description}
+        />
+      ))
+    }
+    <h1 class="mt-2 text-xl font-semibold text-black">- Atención al cliente:</h1>
+    {
+      atteClient.map(({ data }: any) => (
+        <ItemExperience
+          name={data.title}
+          position={data.badge}
+          years={data.date}
+          summary={data.description}
+        />
+      ))
+    }
+    <h1 class="mt-2 text-xl font-semibold text-black">- Tecnico:</h1>
+    {
+      technical.map(({ data }: any) => (
+        <ItemExperience
+          name={data.title}
+          position={data.badge}
+          years={data.date}
+          summary={data.description}
         />
       ))
     }
