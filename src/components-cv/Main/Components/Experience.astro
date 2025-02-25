@@ -5,10 +5,20 @@ import SectionScheme from "@/utils/Section-Scheme.astro";
 import ItemExperience from "@/utils/Item-WSVA.astro";
 
 import { formatYears } from "@/assets/js/Format-Time";
-import { fetchRepos } from "@/api/acces_api";
+import { getCachedRepos } from "@/api/acces_api"; // Usa la función con caché
 
-const developer = await fetchRepos().then((repos) => {
-  return repos.map((res: any) => {
+// Definir tipo para la experiencia
+type Experience = {
+  title: string;
+  date: string;
+  description: string;
+  download: string;
+  badge: string;
+};
+
+// Obtener repositorios con caché
+const developer: Experience[] = await getCachedRepos().then((repos) =>
+  repos.map((res) => {
     const startDate = res.created_at;
     const endDate = res.pushed_at || null;
 
@@ -19,30 +29,46 @@ const developer = await fetchRepos().then((repos) => {
       date: date,
       description: res.description || "Descripción no disponible",
       download: res.html_url || "URL no disponible",
-      badge: "latest " + res.language || "Sin destacados",
+      badge: res.language ? `latest ${res.language}` : "Sin destacados",
     };
-  });
-});
+  })
+);
 
+// Obtener experiencias desde Astro Content Collection
 const experiences = await getCollection("experiences");
-const atteClient = experiences.filter(
-  ({ data }: any) => data.type === "AtteClient"
-);
-const technical = experiences.filter(
-  ({ data }: any) => data.type === "Technical"
-);
 
-const titleClass = "mt-2 text-xl font-semibold text-black"
+// Filtrar y mapear experiencias según tipo
+const atteClient: Experience[] = experiences
+  .filter(({ data }) => data.type === "AtteClient")
+  .map(({ data }) => ({
+    title: data.title,
+    date: data.date,
+    description: data.description,
+    download: data.download || "",
+    badge: data.badge,
+  }));
+
+const technical: Experience[] = experiences
+  .filter(({ data }) => data.type === "Technical")
+  .map(({ data }) => ({
+    title: data.title,
+    date: data.date,
+    description: data.description,
+    download: data.download || "",
+    badge: data.badge,
+  }));
+
+const titleClass = "mt-2 text-xl font-semibold text-black";
 ---
 
-<SectionScheme id="" className="pb-10 gap-4">
+<SectionScheme id="experiencia" className="pb-10 gap-4">
   <header>
     <h1 class="text-2xl text-black font-bold">Experiencia</h1>
   </header>
   <div class="text-gray-900 list-none flex flex-col gap-4">
     <h1 class={titleClass}>- Software:</h1>
     {
-      developer.map((dev: any) => (
+      developer.map((dev) => (
         <ItemExperience
           name={dev.title}
           position="Programador"
@@ -53,23 +79,23 @@ const titleClass = "mt-2 text-xl font-semibold text-black"
     }
     <h1 class={titleClass}>- Atención al cliente:</h1>
     {
-      atteClient.map(({ data }: any) => (
+      atteClient.map((exp) => (
         <ItemExperience
-          name={data.title}
-          position={data.badge}
-          years={data.date}
-          summary={data.description}
+          name={exp.title}
+          position={exp.badge}
+          years={exp.date}
+          summary={exp.description}
         />
       ))
     }
-    <h1 class={titleClass}>- Tecnico:</h1>
+    <h1 class={titleClass}>- Técnico:</h1>
     {
-      technical.map(({ data }: any) => (
+      technical.map((exp) => (
         <ItemExperience
-          name={data.title}
-          position={data.badge}
-          years={data.date}
-          summary={data.description}
+          name={exp.title}
+          position={exp.badge}
+          years={exp.date}
+          summary={exp.description}
         />
       ))
     }

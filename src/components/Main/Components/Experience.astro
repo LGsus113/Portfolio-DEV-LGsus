@@ -6,12 +6,22 @@ import ExperienceType from "@/components/Main/Components/Experience/Experience-T
 import SectionScheme from "@/utils/Section-Scheme.astro";
 
 import { formatYears } from "@/assets/js/Format-Time";
-import { fetchRepos } from "@/api/acces_api";
+import { getCachedRepos } from "@/api/acces_api"; // Usa la función con cache
 
 import ExperienceIcon from "@/icons/experience.astro";
 
-const developer = await fetchRepos().then((repos) => {
-  return repos.map((res: any) => {
+// Definir tipo para la experiencia
+type Experience = {
+  title: string;
+  date: string;
+  description: string;
+  download: string;
+  badge: string;
+};
+
+// Obtener repositorios con cache
+const developer: Experience[] = await getCachedRepos().then((repos) =>
+  repos.map((res) => {
     const startDate = res.created_at;
     const endDate = res.pushed_at || null;
 
@@ -22,19 +32,36 @@ const developer = await fetchRepos().then((repos) => {
       date: date,
       description: res.description || "Descripción no disponible",
       download: res.html_url || "URL no disponible",
-      badge: "latest " + res.language || "Sin destacados",
+      badge: res.language ? `latest ${res.language}` : "Sin destacados",
     };
-  });
-});
+  })
+);
 
+// Obtener experiencias desde Astro Content Collection
 const experiences = await getCollection("experiences");
-const atteClient = experiences.filter(
-  ({ data }: any) => data.type === "AtteClient"
-);
-const technical = experiences.filter(
-  ({ data }: any) => data.type === "Technical"
-);
 
+// Filtrar según tipo de experiencia
+const atteClient: Experience[] = experiences
+  .filter(({ data }) => data.type === "AtteClient")
+  .map(({ data }) => ({
+    title: data.title,
+    date: data.date,
+    description: data.description,
+    download: data.download || "",
+    badge: data.badge,
+  }));
+
+const technical: Experience[] = experiences
+  .filter(({ data }) => data.type === "Technical")
+  .map(({ data }) => ({
+    title: data.title,
+    date: data.date,
+    description: data.description,
+    download: data.download || "",
+    badge: data.badge,
+  }));
+
+// Lista final de experiencias
 const EXPERIENCES = [
   {
     title: "Como desarrollador:",
@@ -44,24 +71,12 @@ const EXPERIENCES = [
   {
     title: "En atención al cliente:",
     color: "yellow",
-    items: atteClient.map(({ data }: any) => ({
-      title: data.title,
-      date: data.date,
-      description: data.description,
-      download: data.download || "",
-      badge: data.badge,
-    })),
+    items: atteClient,
   },
   {
     title: "Como técnico ensamblador:",
     color: "purple",
-    items: technical.map(({ data }: any) => ({
-      title: data.title,
-      date: data.date,
-      description: data.description,
-      download: data.download || "",
-      badge: data.badge,
-    })),
+    items: technical,
   },
 ];
 ---
