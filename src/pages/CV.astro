@@ -2,12 +2,14 @@
 import Layout from "@/layouts/Layout.astro";
 import MainCV from "@/components-cv/Main/Main-CV.astro";
 import Footer from "@/components-cv/Footer/Footer.astro";
-import BGCV from "@/backgrounds/BG-CV.astro";
 import CVHeader from "@/components-cv/Header/CV-Header.astro";
 ---
 
-<Layout title="CV de LGsus" description="Ver y descargar cv de LGsus">
-  <BGCV slot={"background"} />
+<Layout
+  title="CV de LGsus"
+  description="Ver y descargar cv de LGsus"
+  clasName="fixed top-0 left-0 z-[-2] min-h-screen min-w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]"
+>
   <CVHeader slot={"header"} />
   <MainCV slot={"main"} />
   <Footer slot={"footer"} />

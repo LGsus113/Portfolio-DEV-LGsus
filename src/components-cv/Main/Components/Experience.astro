@@ -32,7 +32,7 @@ const technical = experiences.filter(
   ({ data }: any) => data.type === "Technical"
 );
 
-const titleClass = "mt-2 text-lg md:text-xl font-semibold text-black"
+const titleClass = "mt-2 text-xl font-semibold text-black"
 ---
 
 <SectionScheme id="" className="pb-10 gap-4">
@@ -40,7 +40,7 @@ const titleClass = "mt-2 text-lg md:text-xl font-semibold text-black"
     <h1 class="text-2xl text-black font-bold">Experiencia</h1>
   </header>
   <div class="text-gray-900 list-none flex flex-col gap-4">
-    <h1 class="mt-2 text-xl font-semibold text-black">- Software:</h1>
+    <h1 class={titleClass}>- Software:</h1>
     {
       developer.map((dev: any) => (
         <ItemExperience
@@ -51,7 +51,7 @@ const titleClass = "mt-2 text-lg md:text-xl font-semibold text-black"
         />
       ))
     }
-    <h1 class="mt-2 text-xl font-semibold text-black">- Atención al cliente:</h1>
+    <h1 class={titleClass}>- Atención al cliente:</h1>
     {
       atteClient.map(({ data }: any) => (
         <ItemExperience
@@ -62,7 +62,7 @@ const titleClass = "mt-2 text-lg md:text-xl font-semibold text-black"
         />
       ))
     }
-    <h1 class="mt-2 text-xl font-semibold text-black">- Tecnico:</h1>
+    <h1 class={titleClass}>- Tecnico:</h1>
     {
       technical.map(({ data }: any) => (
         <ItemExperience

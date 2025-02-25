@@ -1,13 +1,16 @@
 ---
+import { ClientRouter } from "astro:transitions";
+
 import LogoLGsus from "@public/lgsus.webp";
 import "@fontsource-variable/onest";
 
 interface Props {
   title: string;
   description: string;
+  clasName: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, clasName } = Astro.props;
 ---
 
 <!doctype html>
@@ -19,9 +22,9 @@ const { title, description } = Astro.props;
     <link rel="icon" type="image/svg+xml" href={LogoLGsus.src} />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <ClientRouter />
   </head>
-  <body class="flex flex-col items-center">
-    <slot name="background" />
+  <body class=`${clasName} flex flex-col items-center`>
     <header class="w-full h-auto">
       <slot name="header" />
     </header>

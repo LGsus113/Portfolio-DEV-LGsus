@@ -11,6 +11,11 @@ const { name, image } = Astro.props as Basics;
   class="w-[170px] h-[170px] flex items-center justify-center overflow-hidden rounded-lg shadow-md shadow-black/[.5]"
 >
   <div class="w-full h-full">
-    <img src={image} alt={name} class="object-cover object-top" />
+    <img
+      src={image}
+      alt={name}
+      class="object-cover object-top"
+      transition:name="img-LGsus"
+    />
   </div>
 </main>

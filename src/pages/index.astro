@@ -1,5 +1,4 @@
 ---
-import BGIndex from "@/backgrounds/BG-Index.astro";
 import Footer from "@/components/Footer/Footer.astro";
 import Layout from "@/layouts/Layout.astro";
 import NavHeader from "@/components/Header/Nav-Header.astro";
@@ -9,8 +8,8 @@ import Welcome from "@/components/Main/Welcome.astro";
 <Layout
   title="Portfolio de LGsus"
   description="Programador y Desarrollador Web"
+  clasName="fixed top-0 left-0 z-[-2] min-h-screen min-w-full bg-[#000000] bg-[radial-gradient(#ffffff33_1px,#00091d_1px)] bg-[size:20px_20px] overflow-hidden"
 >
-  <BGIndex slot={"background"} />
   <NavHeader slot={"header"} />
   <Welcome slot={"main"} />
   <Footer slot={"footer"} />
