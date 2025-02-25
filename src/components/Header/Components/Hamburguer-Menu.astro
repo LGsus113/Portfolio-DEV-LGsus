@@ -18,7 +18,7 @@ import MenuHamburguer from "@/icons/menuHamburguer.astro";
 </ul>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
+  function menuHover() {
     const button = document.getElementById("menu-button");
     const menu = document.getElementById("navbar-hamburger");
 
@@ -41,5 +41,8 @@ import MenuHamburguer from "@/icons/menuHamburguer.astro";
 
     window.addEventListener("resize", updateMenuState);
     updateMenuState();
-  });
+  }
+
+  document.addEventListener("DOMContentLoaded", menuHover);
+  document.addEventListener("astro:after-swap", menuHover);
 </script>
