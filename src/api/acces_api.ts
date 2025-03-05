@@ -74,30 +74,28 @@ const fetchRepos = async (): Promise<Repo[]> => {
 
 // Función para verificar si hubo cambios en los repositorios
 const checkForUpdates = async () => {
-  const events = await fetchEvents();
-  console.log("🔍 Eventos obtenidos:", events);
+  const newRepos = await fetchRepos(); // Obtener la lista actualizada de repositorios
 
-  const repoEvents = events.filter((event) =>
-    ["PushEvent", "CreateEvent", "DeleteEvent"].includes(event.type)
-  );
-
-  if (repoEvents.length === 0) {
-    console.log("⚠️ No se detectaron eventos relevantes.");
-    return false;
+  if (!cache.repos) {
+    console.log("🔄 No hay caché previa, almacenando datos iniciales...");
+    cache.repos = newRepos;
+    return true; // Forzar actualización inicial
   }
 
-  const latestEventTime = Math.max(
-    ...repoEvents.map((event) => new Date(event.created_at).getTime())
-  );
+  const hasChanges = newRepos.some((newRepo) => {
+    const cachedRepo = cache.repos?.find((r) => r.id === newRepo.id);
+    return !cachedRepo || newRepo.pushed_at !== cachedRepo.pushed_at; // Comparar cambios
+  });
 
-  console.log("⏳ Último evento registrado:", new Date(latestEventTime));
-
-  if (latestEventTime > cache.lastUpdate) {
-    console.log("✅ Se detectaron cambios, actualizando caché...");
-    cache.lastUpdate = latestEventTime;
+  if (hasChanges) {
+    console.log(
+      "✅ Se detectaron cambios en los repositorios, actualizando caché..."
+    );
+    cache.repos = newRepos;
     return true;
   }
 
+  console.log("⚠️ No se detectaron cambios en los repositorios.");
   return false;
 };
 
