@@ -3,12 +3,12 @@
     "name": "Jesús Medina Lázaro",
     "label": "Full Stack Developer interesado en proyectos donde pueda aprender y mejorar mis conocimientos.",
     "image": "/download.webp",
-    "email": "john@gmail.com",
-    "phone": "(912) 555-4321",
+    "email": "lgsustm@gmail.com",
+    "phone": "+51 963 500 322",
     "url": "mailto:lgsustm@gmail.com?subject=Hola!!&body=Quisiera contactarme contigo para un proyecto :).",
     "summaries": [
       {
-        "text": "Mi nombre real es 'Jesus Medina', pero me dicen 'Yisus', de ahí mi marca y logo'LGsus'. Soy programador full stack, con 1 año de experiencia en proyectos de estudio."
+        "text": "Mi nombre real es 'Jesus Medina', pero me dicen 'Yisus', de ahí mi marca y logo 'LGsus'. Soy programador full stack, con 1 año de experiencia en proyectos de estudio."
       },
       {
         "text": "A día de hoy estudio para aprender mas de lo que gusta hacer. '¿Como llegué a programar?' Buena pregunta, todo comenzó cuando empecé mis estudios."
@@ -28,12 +28,14 @@
       {
         "network": "LinkedIn",
         "username": "john",
-        "url": "https://www.linkedin.com/in/lgsus-tm-16b592338"
+        "url": "https://www.linkedin.com/in/lgsus-tm-16b592338",
+        "icon": "LinkedIn"
       },
       {
         "network": "GitHub",
         "username": "john",
-        "url": "https://github.com/LGsus113"
+        "url": "https://github.com/LGsus113",
+        "icon": "GitHub"
       }
     ]
   },

@@ -1,25 +1,16 @@
 ---
 import { getCollection } from "astro:content";
+import type { Experience } from "@/type/type";
 
 import Encabezado from "@/utils/Encabezado.astro";
 import ExperienceType from "@/components/Main/Components/Experience/Experience-Type.astro";
 import SectionScheme from "@/utils/Section-Scheme.astro";
 
 import { formatYears } from "@/assets/js/Format-Time";
-import { getCachedRepos } from "@/api/acces_api"; // Usa la función con cache
+import { getCachedRepos } from "@/api/acces_api";
 
 import ExperienceIcon from "@/icons/experience.astro";
 
-// Definir tipo para la experiencia
-type Experience = {
-  title: string;
-  date: string;
-  description: string;
-  download: string;
-  badge: string;
-};
-
-// Obtener repositorios con cache
 const developer: Experience[] = await getCachedRepos().then((repos) =>
   repos.map((res) => {
     const startDate = res.created_at;
@@ -37,10 +28,8 @@ const developer: Experience[] = await getCachedRepos().then((repos) =>
   })
 );
 
-// Obtener experiencias desde Astro Content Collection
 const experiences = await getCollection("experiences");
 
-// Filtrar según tipo de experiencia
 const atteClient: Experience[] = experiences
   .filter(({ data }) => data.type === "AtteClient")
   .map(({ data }) => ({
@@ -61,7 +50,6 @@ const technical: Experience[] = experiences
     badge: data.badge,
   }));
 
-// Lista final de experiencias
 const EXPERIENCES = [
   {
     title: "Como desarrollador:",

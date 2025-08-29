@@ -1,25 +1,7 @@
 ---
-interface Props {
-  label: string;
-  type:
-    | "textarea"
-    | "text"
-    | "email"
-    | "password"
-    | "number"
-    | "tel"
-    | "url"
-    | "search"
-    | "date"
-    | "time"
-    | "datetime-local"
-    | "month"
-    | "week";
-  name: string;
-  required: boolean;
-}
+import type { ItemInputProps } from "@/type/type";
 
-const { label, type, name, required } = Astro.props;
+const { label, type, name, required } = Astro.props as ItemInputProps;
 const isTextarea = type === "textarea";
 ---
 

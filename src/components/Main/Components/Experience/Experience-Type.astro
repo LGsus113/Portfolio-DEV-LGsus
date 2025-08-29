@@ -1,13 +1,7 @@
 ---
 import ExperienceItem from "@/components/Main/Components/Experience/Experience-Item.astro";
 
-type Experience = {
-  title: string;
-  date: string;
-  description: string;
-  download: string;
-  badge: string;
-};
+import type { ExperienceTypeProps } from "@/type/type";
 
 const { title, color, experiences, class: customClass } = Astro.props;
 
@@ -26,7 +20,7 @@ const colors = colorClass[color as keyof typeof colorClass] || "text-gray-700";
   </h1>
   <ol class="relative border-s border-gray-200 dark:border-gray-700">
     {
-      experiences.map((item: Experience) => (
+      experiences.map((item: ExperienceTypeProps) => (
         <ExperienceItem {...item} color={color} />
       ))
     }

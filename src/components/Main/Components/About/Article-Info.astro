@@ -1,13 +1,14 @@
 ---
 import TextUse from "@/utils/Text-Use.astro";
 
-interface Props {
-  data: {
-    description: string;
-    className: string;
-  }[];
-}
-const data = Astro.props.data;
+import { basics } from "@cv";
+
+const colors = ["text-green-300/[.7]", "text-purple-300/[.7]", "text-purple-300/[.7]"];
+
+const data = basics.summaries.map((item, index) => ({
+  description: item.text,
+  className: colors[index % colors.length]
+}));
 ---
 
 <article class="flex flex-col xl:flex-row gap-5 items-center justify-between">
