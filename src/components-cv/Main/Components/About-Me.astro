@@ -1,18 +1,10 @@
 ---
 import SectionScheme from "@/utils/Section-Scheme.astro";
 import TextUse from "@/utils/Text-Use.astro";
-
+import type { AboutMeProps } from "@/type/type";
 import { basics } from "@cv";
 
-interface Summarie {
-  text: string;
-}
-
-interface Basics {
-  summaries: Summarie[];
-}
-
-const { summaries } = basics as Basics;
+const { summaries } = basics as AboutMeProps;
 ---
 
 <SectionScheme id="" className="p-10 gap-4">

@@ -1,19 +1,11 @@
 ---
-interface Props {
-  title: string;
-  url: string;
-}
+import type { LinkProfileProps } from "@/type/type";
 
-const { title, url } = Astro.props;
+const { title, url } = Astro.props as LinkProfileProps;
 ---
 
 <div class="flex items-center gap-2 hover:opacity-100 hover:bg-gray-200">
-  <a
-    href={url}
-    title={title}
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <slot/>
+  <a href={url} title={title} target="_blank" rel="noopener noreferrer">
+    <slot />
   </a>
 </div>

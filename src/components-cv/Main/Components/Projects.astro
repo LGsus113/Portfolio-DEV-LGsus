@@ -1,20 +1,10 @@
 ---
 import SectionScheme from "@/utils/Section-Scheme.astro";
-
+import type { ProjectProps } from "@/type/type";
 import { formatYears } from "@/assets/js/Format-Time";
 import { projects } from "@cv";
 
-interface Project {
-  name: string;
-  description: string;
-  startDate: string;
-  endDate: string | null;
-  url: string;
-  highlights: string[];
-  github: string;
-}
-
-const projectsTyped: Project[] = projects;
+const projectsTyped: ProjectProps[] = projects;
 ---
 
 <SectionScheme id="" className="pb-10 gap-4">

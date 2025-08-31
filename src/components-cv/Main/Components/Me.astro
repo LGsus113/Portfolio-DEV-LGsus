@@ -3,42 +3,41 @@ import FooterIconMe from "@/components-cv/Main/Components/Me/Footer-Icon-Me.astr
 import HeaderMe from "@/components-cv/Main/Components/Me/Header-Me.astro";
 import MainMe from "@/components-cv/Main/Components/Me/Main-Me.astro";
 import SectionScheme from "@/utils/Section-Scheme.astro";
-
+import type { MeProps } from "@/type/type";
 import { basics } from "@cv";
 
-interface Profile {
-  network: string;
-  username: string;
-  url: string;
-}
+const {
+  name,
+  fecnac,
+  dni,
+  label,
+  image,
+  email,
+  phone,
+  location: { city, region },
+  profiles,
+} = basics as MeProps;
 
-interface Basics {
-  name: string;
-  label: string;
-  image: string;
-  email: string;
-  phone: string;
-  url: string;
-  location: {
-    address: string;
-    postalCode: string;
-    city: string;
-    countryCode: string;
-    region: string;
-  };
-  profiles: Profile[];
-}
-
-const { name, label, image, email, phone, location, profiles } =
-  basics as Basics;
-
-const { city, region } = location;
+const propsIconMe = {
+  label,
+  name,
+  fecnac,
+  dni,
+  email,
+  phone,
+  city,
+  region,
+};
 ---
 
 <SectionScheme id="" className="pt-24 pb-0">
-  <div class="w-full h-auto flex flex-col md:flex-row items-center gap-10 md:gap-40 text-gray-900">
-    <article class="w-full md:w-2/3 h-auto flex flex-col items-center md:items-start gap-2">
-      <HeaderMe name={name} label={label} city={city} region={region} />
+  <div
+    class="w-full h-auto flex flex-col md:flex-row items-center gap-10 md:gap-40 text-gray-900"
+  >
+    <article
+      class="w-full md:w-2/3 h-auto flex flex-col items-center md:items-start gap-3"
+    >
+      <HeaderMe {...propsIconMe} />
       <FooterIconMe
         name={name}
         email={email}

@@ -1,23 +1,12 @@
 ---
 import LinkProfile from "@/components-cv/Main/Components/Me/Link-Profile.astro";
-
+import type { FooterMe } from "@/type/type";
 import GitHub from "@/icons/github.astro";
 import LinkedIn from "@/icons/linkedin.astro";
 import MailIcon from "@/icons/mail.astro";
 import PhoneIcon from "@/icons/phone.astro";
 
-interface Basics {
-  name: string;
-  email: string;
-  phone: string;
-  profiles: {
-    network: string;
-    username: string;
-    url: string;
-  }[];
-}
-
-const { name, email, phone, profiles } = Astro.props as Basics;
+const { name, email, phone, profiles } = Astro.props as FooterMe;
 
 const SocialIconsMap: Record<string, any> = {
   GitHub: GitHub,

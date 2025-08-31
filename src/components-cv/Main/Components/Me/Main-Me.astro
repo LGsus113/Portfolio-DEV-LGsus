@@ -1,10 +1,6 @@
 ---
-interface Basics {
-  name: string;
-  image: string;
-}
-
-const { name, image } = Astro.props as Basics;
+import type { MainMe } from "@/type/type";
+const { name, image } = Astro.props as MainMe;
 ---
 
 <main
