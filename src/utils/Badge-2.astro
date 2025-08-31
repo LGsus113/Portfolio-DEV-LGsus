@@ -1,10 +1,6 @@
 ---
-interface Props {
-  bg: string;
-  text: string;
-}
-
-const { bg, text } = Astro.props;
+import type { Badge2Props } from "@/type/type";
+const { bg, text } = Astro.props as Badge2Props;
 ---
 
 <span

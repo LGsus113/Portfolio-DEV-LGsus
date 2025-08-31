@@ -1,12 +1,6 @@
 ---
-interface Props {
-  name: string;
-  position: string;
-  years: string;
-  summary: string;
-}
-
-const { name, position, years, summary } = Astro.props;
+import type { ItemWSVAProps } from "@/type/type";
+const { name, position, years, summary } = Astro.props as ItemWSVAProps;
 ---
 
 <li>

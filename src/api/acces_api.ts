@@ -1,35 +1,16 @@
+import type { RepoTypes, GitHubEventTypes } from "@/type/type";
+
 const token = import.meta.env.VITE_ACCES_TOKEN;
 const CACHE_DURATION = 5 * 60 * 1000; // 5 minutos
 const UPDATE_INTERVAL = 60 * 1000; // 1 minuto
 
 let cache = {
-  repos: null as Repo[] | null,
+  repos: null as RepoTypes[] | null,
   lastUpdate: 0,
 };
 
-// Tipo de repositorio
-type Repo = {
-  id: number;
-  name: string;
-  full_name: string;
-  updated_at: string;
-  html_url: string;
-  created_at: string;
-  pushed_at: string;
-  description: string | null;
-  language: string | null;
-  visibility: string;
-  topics?: string[];
-};
-
-// Tipo de evento de GitHub
-type GitHubEvent = {
-  type: string;
-  created_at: string;
-};
-
 // Función para obtener eventos recientes
-const fetchEvents = async (): Promise<GitHubEvent[]> => {
+const fetchEvents = async (): Promise<GitHubEventTypes[]> => {
   try {
     const response = await fetch(
       `https://api.github.com/users/LGsus113/events`,
@@ -49,7 +30,7 @@ const fetchEvents = async (): Promise<GitHubEvent[]> => {
 };
 
 // Función para obtener los repositorios
-const fetchRepos = async (): Promise<Repo[]> => {
+const fetchRepos = async (): Promise<RepoTypes[]> => {
   try {
     const response = await fetch("https://api.github.com/user/repos", {
       headers: {
@@ -60,7 +41,7 @@ const fetchRepos = async (): Promise<Repo[]> => {
     });
 
     if (!response.ok) throw new Error("Error al obtener repositorios");
-    const data: Repo[] = await response.json();
+    const data: RepoTypes[] = await response.json();
     return data.filter(
       (repo) =>
         repo.visibility === "private" ||
@@ -100,7 +81,7 @@ const checkForUpdates = async () => {
 };
 
 // Función principal para obtener repositorios con caché en el servidor y detección de cambios
-export const getCachedRepos = async (): Promise<Repo[]> => {
+export const getCachedRepos = async (): Promise<RepoTypes[]> => {
   const now = Date.now();
   const needsUpdate = await checkForUpdates();
 

@@ -1,12 +1,11 @@
 ---
-interface Props {
-  id: string;
-  className: string;
-}
-
-const { id, className } = Astro.props;
+import type { SectionSchemeProps } from "@/type/type";
+const { id, className } = Astro.props as SectionSchemeProps;
 ---
 
-<section id={id} class={`w-full h-auto px-5 xl:px-0 flex flex-col ${className}`}>
+<section
+  id={id}
+  class={`w-full h-auto px-5 xl:px-0 flex flex-col ${className}`}
+>
   <slot />
 </section>

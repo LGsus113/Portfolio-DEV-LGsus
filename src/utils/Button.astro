@@ -1,10 +1,6 @@
 ---
-interface Props {
-  link: string;
-  title: string;
-}
-
-const props: Props = Astro.props;
+import type { ButtonProps } from "@/type/type";
+const props = Astro.props as ButtonProps;
 ---
 
 <a

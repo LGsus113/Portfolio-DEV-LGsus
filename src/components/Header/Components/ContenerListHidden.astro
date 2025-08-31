@@ -1,17 +1,9 @@
 ---
 import Hovered from "@/utils/Hovered.astro";
 import ListNav from "@/utils/List-Nav.astro";
+import type { ItemsProps } from "@/type/type";
 
-interface ListProps {
-  label: string;
-  href: string;
-  image: any;
-  target?: string;
-}
-
-const { items } = Astro.props as {
-  items: ListProps[];
-};
+const { items } = Astro.props as ItemsProps;
 ---
 
 <div

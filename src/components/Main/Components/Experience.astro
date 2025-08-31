@@ -1,54 +1,17 @@
 ---
-import { getCollection } from "astro:content";
-import type { Experience } from "@/type/type";
-
+import {
+  getDeveloperExperiences,
+  getOtherExperiences,
+} from "@/service/experience-service";
+import type { ExperienceProps } from "@/type/type";
 import Encabezado from "@/utils/Encabezado.astro";
 import ExperienceType from "@/components/Main/Components/Experience/Experience-Type.astro";
 import SectionScheme from "@/utils/Section-Scheme.astro";
-
-import { formatYears } from "@/assets/js/Format-Time";
-import { getCachedRepos } from "@/api/acces_api";
-
 import ExperienceIcon from "@/icons/experience.astro";
 
-const developer: Experience[] = await getCachedRepos().then((repos) =>
-  repos.map((res) => {
-    const startDate = res.created_at;
-    const endDate = res.pushed_at || null;
-
-    const date = formatYears(startDate, endDate);
-
-    return {
-      title: res.name || "Título no disponible",
-      date: date,
-      description: res.description || "Descripción no disponible",
-      download: res.html_url || "URL no disponible",
-      badge: res.language ? `latest ${res.language}` : "Sin destacados",
-    };
-  })
-);
-
-const experiences = await getCollection("experiences");
-
-const atteClient: Experience[] = experiences
-  .filter(({ data }) => data.type === "AtteClient")
-  .map(({ data }) => ({
-    title: data.title,
-    date: data.date,
-    description: data.description,
-    download: data.download || "",
-    badge: data.badge,
-  }));
-
-const technical: Experience[] = experiences
-  .filter(({ data }) => data.type === "Technical")
-  .map(({ data }) => ({
-    title: data.title,
-    date: data.date,
-    description: data.description,
-    download: data.download || "",
-    badge: data.badge,
-  }));
+const developer: ExperienceProps[] = await getDeveloperExperiences();
+const atteClient: ExperienceProps[] = await getOtherExperiences("AtteClient");
+const technical: ExperienceProps[] = await getOtherExperiences("Technical");
 
 const EXPERIENCES = [
   {

@@ -1,15 +1,6 @@
 ---
-export interface ListProps {
-  label: string;
-  href: string;
-  image: any;
-  target?: string;
-}
-
-const { items, variant } = Astro.props as {
-  items: ListProps[];
-  variant?: "default" | "alt" | "third";
-};
+import type { ListNavProps } from "@/type/type";
+const { items, variant } = Astro.props as ListNavProps;
 ---
 
 <ul

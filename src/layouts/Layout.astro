@@ -1,16 +1,10 @@
 ---
 import { ClientRouter } from "astro:transitions";
-
+import type { LayoutProps } from "@/type/type";
 import LogoLGsus from "@public/lgsus.webp";
 import "@fontsource-variable/onest";
 
-interface Props {
-  title: string;
-  description: string;
-  clasName: string;
-}
-
-const { title, description, clasName } = Astro.props;
+const { title, description, clasName } = Astro.props as LayoutProps;
 ---
 
 <!doctype html>
@@ -24,7 +18,7 @@ const { title, description, clasName } = Astro.props;
     <title>{title}</title>
     <ClientRouter />
   </head>
-  <body class=`${clasName} flex flex-col items-center`>
+  <body class:list={[clasName, "flex flex-col items-center"]}>
     <header class="w-full h-auto">
       <slot name="header" />
     </header>

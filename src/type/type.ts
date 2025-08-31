@@ -1,12 +1,36 @@
-export interface Experience {
+export interface TitleProps {
   title: string;
-  date: string;
-  description: string;
-  download: string;
-  badge: string;
 }
 
-export interface ItemInputProps {
+interface NameProps {
+  name: string;
+}
+
+export interface LayoutProps extends TitleProps {
+  description: string;
+  clasName: string;
+}
+
+export interface RepoTypes {
+  id: number;
+  name: string;
+  full_name: string;
+  updated_at: string;
+  html_url: string;
+  created_at: string;
+  pushed_at: string;
+  description: string | null;
+  language: string | null;
+  visibility: string;
+  topics?: string[];
+}
+
+export interface GitHubEventTypes {
+  type: string;
+  created_at: string;
+}
+
+export interface ItemInputProps extends NameProps {
   label: string;
   type:
     | "textarea"
@@ -22,12 +46,14 @@ export interface ItemInputProps {
     | "datetime-local"
     | "month"
     | "week";
-  name: string;
   required: boolean;
 }
 
-export interface ExperienceTypeProps {
-  title: string;
+export interface ButtonProps extends TitleProps {
+  link: string;
+}
+
+export interface ExperienceTypeProps extends TitleProps {
   date: string;
   description: string;
   download: string;
@@ -44,8 +70,7 @@ interface ProfileProps {
   url: string;
 }
 
-export interface MeProps {
-  name: string;
+export interface MeProps extends NameProps {
   fecnac: string;
   dni: string;
   label: string;
@@ -63,9 +88,8 @@ export interface MeProps {
   profiles: ProfileProps[];
 }
 
-export interface HeaderMe {
+export interface HeaderMe extends NameProps {
   label: string;
-  name: string;
   fecnac: string;
   dni: string;
   email: string;
@@ -74,13 +98,11 @@ export interface HeaderMe {
   region: string;
 }
 
-export interface MainMe {
-  name: string;
+export interface MainMe extends NameProps {
   image: string;
 }
 
-export interface FooterMe {
-  name: string;
+export interface FooterMe extends NameProps {
   email: string;
   phone: string;
   profiles: ProfileProps[];
@@ -93,8 +115,7 @@ export interface AboutMeProps {
   summaries: SummarieProps[];
 }
 
-export interface ExperienceProps {
-  title: string;
+export interface ExperienceProps extends TitleProps {
   date: string;
   description: string;
   download: string;
@@ -111,8 +132,7 @@ export interface EducationProps {
   courses: string[];
 }
 
-export interface ProjectProps {
-  name: string;
+export interface ProjectProps extends NameProps {
   description: string;
   startDate: string;
   endDate: string | null;
@@ -121,12 +141,52 @@ export interface ProjectProps {
   github: string;
 }
 
-export interface SkillProps {
-  name: string;
+export interface SkillProps extends NameProps {
   level: string;
 }
 
-export interface LinkProfileProps {
-  title: string;
+export interface LinkProfileProps extends TitleProps {
   url: string;
+}
+
+export interface Badge2Props {
+  bg: string;
+  text: string;
+}
+
+export interface TextUseProps {
+  description: string;
+  className: string;
+  cv: boolean;
+}
+
+export interface SectionSchemeProps {
+  id: string;
+  className: string;
+}
+
+interface ListProps {
+  label: string;
+  href: string;
+  image: any;
+  target?: string;
+}
+
+export interface ItemsProps {
+  items: ListProps[];
+}
+
+export interface ListNavProps extends ItemsProps {
+  variant?: "default" | "alt" | "third";
+}
+
+export interface ItemWSVAProps extends NameProps {
+  position: string;
+  years: string;
+  summary: string;
+}
+
+export interface HoveredProps {
+  items: string;
+  container: string;
 }

@@ -1,11 +1,7 @@
 ---
-interface Props {
-  description: string;
-  className: string;
-  cv: boolean;
-}
+import type { TextUseProps } from "@/type/type";
 
-const { description, className, cv } = Astro.props;
+const { description, className, cv } = Astro.props as TextUseProps;
 
 const highlightText = (text: string) => {
   return text.replace(
