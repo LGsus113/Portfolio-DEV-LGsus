@@ -16,7 +16,7 @@ import LogoLGsus from "@public/LogoLGsus.webp";
       id="logo-animation"
       src={LogoLGsus.src}
       alt="logo"
-      class="absolute z-20 w-60 top-16"
+      class="absolute z-20 w-60 top-16 drop-shadow-lg drop-shadow-black"
     />
     <div
       id="info-animation"
@@ -78,9 +78,17 @@ import LogoLGsus from "@public/LogoLGsus.webp";
     .to(
       "#logo-mask",
       {
-        opacity: 0, // 👈 se desvanece al mismo tiempo
-        duration: 0.18, // 👈 tiempo de la animación
+        opacity: 0,
+        duration: 0.17,
       },
-      0.08
+      0.1
+    )
+    .to(
+      "#logo-mask",
+      {
+        y: -400,
+        duration: 0.4,
+      },
+      0.095
     );
 </script>
