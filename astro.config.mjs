@@ -1,6 +1,6 @@
 // @ts-check
 import { defineConfig } from "astro/config";
-import tailwind from "@astrojs/tailwind";
+import tailwindcss from '@tailwindcss/vite';
 import netlify from "@astrojs/netlify/functions";
 import { resolve } from "path";
 
@@ -8,12 +8,13 @@ import { resolve } from "path";
 export default defineConfig({
   output: "server",
   adapter: netlify({}),
-  integrations: [tailwind()],
   vite: {
+    plugins: [tailwindcss()],
     resolve: {
       alias: {
         "@": resolve("./src"),
         "@public": resolve("./public"),
+        "@cv": resolve("./src/cv.json"),
       },
     },
   },

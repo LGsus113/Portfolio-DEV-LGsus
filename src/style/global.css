@@ -1,0 +1,28 @@
+@import "tailwindcss";
+@import "@fontsource-variable/onest";
+
+@theme {
+  --font-onest: "Onest", sans-serif;
+}
+
+@layer utilities {
+}
+
+:root {
+  color-scheme: light dark;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
