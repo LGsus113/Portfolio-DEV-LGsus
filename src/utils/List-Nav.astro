@@ -4,22 +4,27 @@ const { items, variant } = Astro.props as ListNavProps;
 ---
 
 <ul
-  class={`flex 
-  ${variant === "alt" ? "flex-row" : "flex-col lg:flex-row"} 
-  flex-wrap gap-x-2 text-base font-semibold`}
+  class:list={{
+    "flex flex-wrap gap-x-2 text-base font-semibold": true,
+    "flex-row": variant === "alt",
+    "flex-col lg:flex-row": variant !== "alt",
+  }}
 >
   {
     items.map((item) => {
       const ImageComponent = item.image;
-      const buttonClass =
-        variant === "alt"
-          ? "border-2 border-white rounded-full mb-4 xl:mr-4 text-white backdrop-blur-sm hover:text-yellow-100 hover:border-yellow-100 hover:[&>a]:scale-95 active:scale-110 transition-all duration-300"
-          : variant === "default"
-            ? "text-white"
-            : "text-gray-800 dark:text-white hover:underline";
 
       return (
-        <li class={`flex ${buttonClass}`}>
+        <li
+          class:list={{
+            flex: true,
+            "border-2 border-white rounded-full mb-4 xl:mr-4 text-white backdrop-blur-sm hover:text-yellow-100 hover:border-yellow-100 hover:[&>a]:scale-95 active:scale-110 transition-all duration-200":
+              variant === "alt",
+            "text-white": variant === "default",
+            "text-gray-800 dark:text-white hover:underline":
+              variant === "third",
+          }}
+        >
           <a
             href={item.href}
             class="w-full flex flex-1 items-center gap-2 px-4 py-2 transition-all duration-300"

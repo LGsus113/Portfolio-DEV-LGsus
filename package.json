@@ -11,7 +11,9 @@
   "dependencies": {
     "@astrojs/netlify": "^6.2.2",
     "@fontsource-variable/onest": "^5.1.1",
-    "astro": "^5.4.2"
+    "@fontsource/press-start-2p": "^5.2.6",
+    "astro": "^5.4.2",
+    "gsap": "^3.13.0"
   },
   "packageManager": "pnpm@10.15.0",
   "devDependencies": {

@@ -4,7 +4,12 @@ import { ClientRouter } from "astro:transitions";
 import type { LayoutProps } from "@/type/type";
 import LogoLGsus from "@public/lgsus.webp";
 
-const { title, description, clasName } = Astro.props as LayoutProps;
+const {
+  title,
+  description,
+  clasName,
+  variant = "default",
+} = Astro.props as LayoutProps;
 ---
 
 <!doctype html>
@@ -19,7 +24,20 @@ const { title, description, clasName } = Astro.props as LayoutProps;
     <ClientRouter />
   </head>
   <body class:list={[clasName, "flex flex-col items-center"]}>
-    <header class="w-full h-auto">
+    {
+      variant === "main" && (
+        <div class="w-full h-[200vh] overflow-hidden relative">
+          <slot name="animation" />
+        </div>
+      )
+    }
+    <header
+      class:list={{
+        "w-full h-auto": true,
+        "sticky top-0 z-50 h-20": variant === "main",
+        "h-auto": variant !== "main",
+      }}
+    >
       <slot name="header" />
     </header>
     <main id="mainSection" class="w-10/12 xl:w-[1120px]">

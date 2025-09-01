@@ -1,8 +1,10 @@
 @import "tailwindcss";
 @import "@fontsource-variable/onest";
+@import "@fontsource/press-start-2p";
 
 @theme {
   --font-onest: "Onest", sans-serif;
+  --font-press: "Press Start 2P", cursive;
 }
 
 @layer utilities {
@@ -18,7 +20,8 @@ body {
   padding: 0;
   width: 100%;
   min-height: 100vh;
-  overflow-x: hidden;
+  overscroll-behavior: none;
+  font-family: var(--font-onest);
 }
 
 @media (prefers-reduced-motion: reduce) {

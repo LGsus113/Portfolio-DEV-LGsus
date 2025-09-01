@@ -9,6 +9,7 @@ interface NameProps {
 export interface LayoutProps extends TitleProps {
   description: string;
   clasName: string;
+  variant: "default" | "main";
 }
 
 export interface RepoTypes {

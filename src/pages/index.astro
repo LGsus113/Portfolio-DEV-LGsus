@@ -1,15 +1,18 @@
 ---
-import Footer from "@/components/Footer/Footer.astro";
 import Layout from "@/layouts/Layout.astro";
+import Animation from "@/components/Animation/Animation.astro";
 import NavHeader from "@/components/Header/Nav-Header.astro";
 import Welcome from "@/components/Main/Welcome.astro";
+import Footer from "@/components/Footer/Footer.astro";
 ---
 
 <Layout
   title="Portfolio de LGsus"
   description="Programador y Desarrollador Web"
-  clasName="bg-[#000000] bg-[radial-gradient(#ffffff33_1px,#00091d_1px)] bg-[size:20px_20px] overflow-hidden"
+  clasName="bg-[#000000] bg-[radial-gradient(#ffffff33_1px,#00091d_1px)] bg-[size:20px_20px]"
+  variant="main"
 >
+  <Animation slot={"animation"} />
   <NavHeader slot={"header"} />
   <Welcome slot={"main"} />
   <Footer slot={"footer"} />
