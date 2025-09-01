@@ -1,16 +1,31 @@
-<h1 class="text-gray-400/[0.8] text-xl lg:text-4xl font-bold flex flex-row gap-2 xl:gap-4">
-  Hey, soy (LGsus) 
-  <a
-    href="https://www.linkedin.com/in/lgsus-tm-16b592338"
-    target="_blank"
-    rel="noopener"
-    class="flex justify-center items-center"
-  >
-    <slot/>
-  </a>
-</h1>
-<h1 class="text-white text-5xl lg:text-7xl font-bold flex flex-row gap-4 pb-10">Jesus Medina</h1>
-<h2 class="text-lg xl:text-2xl text-wrap">
+---
+import ImageDev from "@/components/Main/Components/Presentation/Image-Dev.astro";
+---
+
+<div class="flex flex-col lg:flex-row justify-center items-start gap-7 pt-2 pb-8">
+  <ImageDev />
+  <div class="flex flex-col justify-center items-start">
+    <h1
+      class="text-gray-400/[0.8] text-xl lg:text-4xl font-bold flex flex-row gap-2 xl:gap-4 font-onest"
+    >
+      Hey, soy (LGsus)
+      <a
+        href="https://www.linkedin.com/in/lgsus-tm-16b592338"
+        target="_blank"
+        rel="noopener"
+        class="flex justify-center items-center"
+      >
+        <slot />
+      </a>
+    </h1>
+    <h1
+      class="text-white text-5xl lg:text-7xl font-bold flex flex-row gap-4"
+    >
+      Jesus Medina
+    </h1>
+  </div>
+</div>
+<h2 class="text-lg xl:text-2xl text-wrap font-onest">
   <span class="text-purple-300">+1 Años de Experiencia. </span>
   <span class="text-green-400">Desarrollador Web. </span>
   <span class="text-yellow-100">De Trujillo, Perú. </span>
