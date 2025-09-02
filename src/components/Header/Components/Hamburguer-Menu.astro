@@ -18,31 +18,6 @@ import MenuHamburguer from "@/icons/menuHamburguer.astro";
 </ul>
 
 <script>
-  function menuHover() {
-    const button = document.getElementById("menu-button");
-    const menu = document.getElementById("navbar-hamburger");
-
-    if (!button || !menu) return;
-
-    const updateMenuState = () => {
-      const isLgTailwind = window.innerWidth >= 1024;
-
-      if (isLgTailwind) {
-        button.setAttribute("aria-expanded", "false");
-        menu.classList.add("hidden");
-      }
-    };
-
-    button.addEventListener("click", () => {
-      const isExpanded = button.getAttribute("aria-expanded") === "true";
-      button.setAttribute("aria-expanded", isExpanded ? "false" : "true");
-      menu.classList.toggle("hidden");
-    });
-
-    window.addEventListener("resize", updateMenuState);
-    updateMenuState();
-  }
-
-  document.addEventListener("DOMContentLoaded", menuHover);
-  document.addEventListener("astro:after-swap", menuHover);
+  import { menuInit } from "@/type-script/open-menu";
+  menuInit();
 </script>
