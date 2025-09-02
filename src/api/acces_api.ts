@@ -1,4 +1,4 @@
-import type { RepoTypes, GitHubEventTypes } from "@/type/type";
+import type { RepoTypes } from "@/type-script/type";
 
 const token = import.meta.env.VITE_ACCES_TOKEN;
 const CACHE_DURATION = 5 * 60 * 1000; // 5 minutos
@@ -7,26 +7,6 @@ const UPDATE_INTERVAL = 60 * 1000; // 1 minuto
 let cache = {
   repos: null as RepoTypes[] | null,
   lastUpdate: 0,
-};
-
-// Función para obtener eventos recientes
-const fetchEvents = async (): Promise<GitHubEventTypes[]> => {
-  try {
-    const response = await fetch(
-      `https://api.github.com/users/LGsus113/events`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          Accept: "application/vnd.github.v3+json",
-        },
-      }
-    );
-    if (!response.ok) throw new Error("Error al obtener eventos");
-    return await response.json();
-  } catch (error) {
-    console.error("❌ Error obteniendo eventos:", error);
-    return [];
-  }
 };
 
 // Función para obtener los repositorios

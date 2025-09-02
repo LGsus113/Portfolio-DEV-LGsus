@@ -1,5 +1,5 @@
 ---
-import type { ListNavProps } from "@/type/type";
+import type { ListNavProps } from "@/type-script/type";
 const { items, variant } = Astro.props as ListNavProps;
 ---
 
@@ -16,6 +16,7 @@ const { items, variant } = Astro.props as ListNavProps;
 
       return (
         <li
+          data-list-linkers
           class:list={{
             flex: true,
             "border-2 border-white rounded-full mb-4 xl:mr-4 text-white backdrop-blur-sm hover:text-yellow-100 hover:border-yellow-100 hover:[&>a]:scale-95 active:scale-110 transition-all duration-200":

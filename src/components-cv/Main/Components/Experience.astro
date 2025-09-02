@@ -2,10 +2,10 @@
 import {
   getDeveloperExperiences,
   getOtherExperiences,
-} from "@/assets/ts/experience-service";
+} from "@/type-script/experience-service";
 import SectionScheme from "@/utils/Section-Scheme.astro";
 import ItemExperience from "@/utils/Item-WSVA.astro";
-import type { ExperienceProps } from "@/type/type";
+import type { ExperienceProps } from "@/type-script/type";
 
 const developer: ExperienceProps[] = await getDeveloperExperiences();
 const atteClient: ExperienceProps[] = await getOtherExperiences("AtteClient");

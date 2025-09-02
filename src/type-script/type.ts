@@ -26,11 +26,6 @@ export interface RepoTypes {
   topics?: string[];
 }
 
-export interface GitHubEventTypes {
-  type: string;
-  created_at: string;
-}
-
 export interface ItemInputProps extends NameProps {
   label: string;
   type:

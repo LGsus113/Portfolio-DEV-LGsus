@@ -1,20 +1,10 @@
----
-import type { HoveredProps } from "@/type/type";
-const props = Astro.props as HoveredProps;
----
-
 <div
-  data-items={props.items}
-  data-container={props.container}
-  class="hover-menu absolute bg-purple-900/[0.7] backdrop-blur-sm rounded-md
-         left-[var(--left)] top-[var(--top)]
-         w-[var(--width)] h-[var(--height)]
-         transition-all duration-300 ease-in-out
-         opacity-0 -z-10 shadow-inner shadow-purple-300/[0.4]"
+  data-hover-menu
+  class="hover-menu absolute bg-purple-900/[0.7] backdrop-blur-sm rounded-md left-[var(--left)] top-[var(--top)] w-[var(--width)] h-[var(--height)] transition-all duration-300 ease-in-out opacity-0 -z-10 shadow-inner shadow-purple-300/[0.4] pointer-events-none"
 >
 </div>
 
 <script>
-  import { initHovered } from "@/assets/ts/hovered";
-  initHovered();
+  import { useHovered } from "@/type-script/hovered";
+  useHovered();
 </script>
