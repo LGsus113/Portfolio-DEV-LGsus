@@ -4,7 +4,7 @@ const { bg, text } = Astro.props as Badge2Props;
 ---
 
 <span
-  class={`${bg} ${text} text-sm font-medium me-2 px-2.5 py-0.5 rounded-sm ms-3`}
+  class:list={[bg, text, "text-sm font-medium me-2 px-2.5 py-0.5 rounded-sm ms-3"]}
 >
   <slot />
 </span>

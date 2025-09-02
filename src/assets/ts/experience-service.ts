@@ -1,6 +1,6 @@
 import { getCollection } from "astro:content";
 import { getCachedRepos } from "@/api/acces_api";
-import { formatYears } from "@/assets/js/Format-Time";
+import { formatYears } from "@/assets/ts/Format-Time";
 import type { ExperienceProps } from "@/type/type";
 
 export async function getDeveloperExperiences(): Promise<ExperienceProps[]> {

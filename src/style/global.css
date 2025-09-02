@@ -29,3 +29,11 @@ body {
     scroll-behavior: auto;
   }
 }
+
+#logo-mask {
+  background: white;
+  mask-image: url("/LogoLGsus.webp");
+  mask-position: center 47%;
+  mask-repeat: no-repeat;
+  mask-size: clamp(5000vh, 3500%, 0vh);
+}
