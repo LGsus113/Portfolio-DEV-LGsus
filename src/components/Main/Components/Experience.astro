@@ -1,15 +1,15 @@
 ---
 import {
-  getDeveloperExperiences,
+  getDeveloperExperiencesGrouped,
   getOtherExperiences,
 } from "@/type-script/experience-service";
-import type { ExperienceProps } from "@/type-script/type";
+import type { ExperienceProps, GroupedExperience } from "@/type-script/type";
 import Encabezado from "@/utils/Encabezado.astro";
 import ExperienceType from "@/components/Main/Components/Experience/Experience-Type.astro";
 import SectionScheme from "@/utils/Section-Scheme.astro";
 import ExperienceIcon from "@/icons/experience.astro";
 
-const developer: ExperienceProps[] = await getDeveloperExperiences();
+const developer: GroupedExperience[] = await getDeveloperExperiencesGrouped();
 const atteClient: ExperienceProps[] = await getOtherExperiences("AtteClient");
 const technical: ExperienceProps[] = await getOtherExperiences("Technical");
 
@@ -18,16 +18,19 @@ const EXPERIENCES = [
     title: "Como desarrollador:",
     color: "green",
     items: developer,
+    grouped: true,
   },
   {
     title: "En atención al cliente:",
     color: "yellow",
     items: atteClient,
+    grouped: false,
   },
   {
     title: "Como técnico ensamblador:",
     color: "purple",
     items: technical,
+    grouped: false,
   },
 ];
 ---
@@ -40,11 +43,12 @@ const EXPERIENCES = [
     class="w-full grid grid-cols-1 grid-rows-auto lg:grid-cols-2 lg:grid-rows-2 gap-5"
   >
     {
-      EXPERIENCES.map(({ title, color, items }, index) => (
+      EXPERIENCES.map(({ title, color, items, grouped }, index) => (
         <ExperienceType
           title={title}
           color={color}
           experiences={items}
+          grouped={grouped}
           class={`p-4 ${index === 0 ? "row-span-2" : "row-span-1"}`}
         />
       ))

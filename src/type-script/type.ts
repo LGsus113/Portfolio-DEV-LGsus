@@ -49,17 +49,6 @@ export interface ButtonProps extends TitleProps {
   link: string;
 }
 
-export interface ExperienceTypeProps extends TitleProps {
-  date: string;
-  description: string;
-  download: string;
-  badge: string;
-}
-
-export interface ExperienceItemProps extends ExperienceTypeProps {
-  color: string;
-}
-
 interface ProfileProps {
   network: string;
   username: string;
@@ -111,11 +100,34 @@ export interface AboutMeProps {
   summaries: SummarieProps[];
 }
 
+export interface ExperienceTypeProps extends TitleProps {
+  date: string;
+  description: string;
+  download: string;
+  badge: string;
+}
+
+export interface ExperienceItemProps extends ExperienceTypeProps {
+  color: string;
+}
+
 export interface ExperienceProps extends TitleProps {
   date: string;
   description: string;
   download: string;
   badge: string;
+}
+
+export interface GroupedExperience {
+  badge: string;
+  items: ExperienceProps[];
+}
+
+export interface ExperienceGroupedProps extends TitleProps {
+  color: string;
+  experiences: ExperienceProps[] | GroupedExperience[];
+  class: string;
+  grouped?: boolean;
 }
 
 export interface EducationProps {

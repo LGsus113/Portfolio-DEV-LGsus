@@ -1,12 +1,30 @@
 import { getCollection } from "astro:content";
 import { getCachedRepos } from "@/api/acces_api";
 import { formatYears } from "@/type-script/Format-Time";
-import type { ExperienceProps } from "@/type-script/type";
+import type { ExperienceProps, GroupedExperience } from "@/type-script/type";
 
-export async function getDeveloperExperiences(): Promise<ExperienceProps[]> {
+function groupByBadge(experiences: ExperienceProps[]): GroupedExperience[] {
+  const map = new Map<string, ExperienceProps[]>();
+
+  for (const exp of experiences) {
+    if (!map.has(exp.badge)) {
+      map.set(exp.badge, []);
+    }
+    map.get(exp.badge)!.push(exp);
+  }
+
+  return Array.from(map.entries()).map(([badge, items]) => ({
+    badge,
+    items,
+  }));
+}
+
+export async function getDeveloperExperiencesGrouped(): Promise<
+  GroupedExperience[]
+> {
   const repos = await getCachedRepos();
 
-  return repos.map((res) => {
+  const experiences: ExperienceProps[] = repos.map((res) => {
     const startDate = res.created_at;
     const endDate = res.pushed_at || null;
     const date = formatYears(startDate, endDate);
@@ -19,6 +37,8 @@ export async function getDeveloperExperiences(): Promise<ExperienceProps[]> {
       badge: res.language ? `latest ${res.language}` : "Sin destacados",
     };
   });
+
+  return groupByBadge(experiences);
 }
 
 export async function getOtherExperiences(

@@ -5,7 +5,8 @@ import ButtonDownload from "@/utils/Button.astro";
 import Badge2 from "@/utils/Badge-2.astro";
 import type { ExperienceItemProps } from "@/type-script/type";
 
-const { title, date, description, download, badge, color } = Astro.props as ExperienceItemProps;
+const { title, date, description, download, badge, color } =
+  Astro.props as ExperienceItemProps;
 
 const colorClasses: Record<
   "green" | "purple" | "yellow",
@@ -33,7 +34,10 @@ const { bg, text } = colorClasses[color as keyof typeof colorClasses] || {
 
 <li class="mb-10 ms-6">
   <span
-    class={`absolute flex items-center justify-center size-6 ${bg} rounded-full -start-3 ring-8 ring-gray-900 dark:ring-gray-900`}
+    class:list={[
+      "absolute flex items-center justify-center size-6 rounded-full -start-3 ring-8 ring-gray-900 dark:ring-gray-900",
+      bg,
+    ]}
   >
     <Icon />
   </span>
