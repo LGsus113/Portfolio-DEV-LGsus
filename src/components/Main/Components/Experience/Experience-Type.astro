@@ -24,21 +24,25 @@ const colors = colorClass[color as keyof typeof colorClass] || "text-gray-700";
 ---
 
 <div class:list={["flex flex-col gap-4", customClass]}>
-  <h1 class:list={["text-xl xl:text-2xl font-medium opacity-60", colors]}>
+  <h1 class:list={["text-xl xl:text-2xl font-bold opacity-60", colors]}>
     {title}
   </h1>
   {
     grouped ? (
-      (experiences as GroupedExperience[]).map(({ badge, items }) => (
-        <div class="mb-6">
-          <h2 class="text-lg font-semibold mb-2">{badge}</h2>
-          <ol class="relative border-s border-gray-200 dark:border-gray-700">
-            {items.map((exp: ExperienceProps) => (
-              <ExperienceItem {...exp} color={color} />
-            ))}
-          </ol>
-        </div>
-      ))
+      <div class="columns-2 gap-3">
+        {(experiences as GroupedExperience[]).map(({ badge, items }) => (
+          <div class="mb-6 break-inside-avoid">
+            <h2 class="text-lg font-normal text-orange-300 mb-2 underline underline-offset-2 decoration-green-300">
+              {badge}
+            </h2>
+            <ol class="relative border-s border-gray-200 dark:border-gray-700">
+              {items.map((exp: ExperienceProps) => (
+                <ExperienceItem {...exp} color={color} />
+              ))}
+            </ol>
+          </div>
+        ))}
+      </div>
     ) : (
       <ol class="relative border-s border-gray-200 dark:border-gray-700">
         {(experiences as ExperienceProps[]).map((item) => (

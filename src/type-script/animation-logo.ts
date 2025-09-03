@@ -34,7 +34,7 @@ function animationLogo() {
       "#logo-mask",
       {
         opacity: 0,
-        duration: 0.17,
+        duration: 0.195,
       },
       0.1
     )

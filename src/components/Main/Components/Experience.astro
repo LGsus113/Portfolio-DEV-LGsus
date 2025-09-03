@@ -37,11 +37,9 @@ const EXPERIENCES = [
 
 <SectionScheme id="experiencia" className="my-16">
   <Encabezado title="Experiencia Laboral">
-    <ExperienceIcon class="size-7 xl:size-9" />
+    <ExperienceIcon class="size-7 xl:size-10" />
   </Encabezado>
-  <div
-    class="w-full grid grid-cols-1 grid-rows-auto lg:grid-cols-2 lg:grid-rows-2 gap-5"
-  >
+  <div class="w-full grid lg:grid-cols-2 auto-rows-auto">
     {
       EXPERIENCES.map(({ title, color, items, grouped }, index) => (
         <ExperienceType
@@ -49,7 +47,7 @@ const EXPERIENCES = [
           color={color}
           experiences={items}
           grouped={grouped}
-          class={`p-4 ${index === 0 ? "row-span-2" : "row-span-1"}`}
+          class={`p-4 ${index === 0 ? "col-span-2" : ""}`}
         />
       ))
     }

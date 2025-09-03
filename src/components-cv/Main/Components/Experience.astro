@@ -1,13 +1,13 @@
 ---
 import {
-  getDeveloperExperiences,
+  getDeveloperExperiencesGrouped,
   getOtherExperiences,
 } from "@/type-script/experience-service";
 import SectionScheme from "@/utils/Section-Scheme.astro";
 import ItemExperience from "@/utils/Item-WSVA.astro";
-import type { ExperienceProps } from "@/type-script/type";
+import type { GroupedExperience, ExperienceProps } from "@/type-script/type";
 
-const developer: ExperienceProps[] = await getDeveloperExperiences();
+const developer: GroupedExperience[] = await getDeveloperExperiencesGrouped();
 const atteClient: ExperienceProps[] = await getOtherExperiences("AtteClient");
 const technical: ExperienceProps[] = await getOtherExperiences("Technical");
 
@@ -21,36 +21,55 @@ const titleClass = "mt-2 text-xl font-semibold text-black";
   <div class="text-gray-900 list-none flex flex-col gap-4">
     <h1 class={titleClass}>- Software:</h1>
     {
-      developer.map((dev) => (
-        <ItemExperience
-          name={dev.title}
-          position="Programador"
-          years={dev.date}
-          summary={dev.description}
-        />
+      developer.map((group) => (
+        <section class="pl-4 mb-2">
+          <h2 class="text-lg font-semibold underline mb-3">
+            {group.badge}
+          </h2>
+          <ul class="flex flex-col gap-3 pl-4">
+            {group.items.map((exp) => (
+              <li>
+                <ItemExperience
+                  name={exp.title}
+                  position={exp.badge}
+                  years={exp.date}
+                  summary={exp.description}
+                />
+              </li>
+            ))}
+          </ul>
+        </section>
       ))
     }
     <h1 class={titleClass}>- Atención al cliente:</h1>
-    {
-      atteClient.map((exp) => (
-        <ItemExperience
-          name={exp.title}
-          position={exp.badge}
-          years={exp.date}
-          summary={exp.description}
-        />
-      ))
-    }
+    <ul class="flex flex-col gap-3 pl-4">
+      {
+        atteClient.map((exp) => (
+          <li>
+            <ItemExperience
+              name={exp.title}
+              position={exp.badge}
+              years={exp.date}
+              summary={exp.description}
+            />
+          </li>
+        ))
+      }
+    </ul>
     <h1 class={titleClass}>- Técnico:</h1>
-    {
-      technical.map((exp) => (
-        <ItemExperience
-          name={exp.title}
-          position={exp.badge}
-          years={exp.date}
-          summary={exp.description}
-        />
-      ))
-    }
+    <ul class="flex flex-col gap-3 pl-4">
+      {
+        technical.map((exp) => (
+          <li>
+            <ItemExperience
+              name={exp.title}
+              position={exp.badge}
+              years={exp.date}
+              summary={exp.description}
+            />
+          </li>
+        ))
+      }
+    </ul>
   </div>
 </SectionScheme>
