@@ -46,5 +46,5 @@ function hovered() {
 
 export function useHovered() {
   document.addEventListener("DOMContentLoaded", hovered);
-  document.addEventListener("astro:after-swap", hovered);
+  document.addEventListener("astro:page-load", hovered);
 }

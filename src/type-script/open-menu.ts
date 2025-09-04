@@ -30,5 +30,5 @@ function menuHover() {
 
 export function menuInit() {
   document.addEventListener("DOMContentLoaded", menuHover);
-  document.addEventListener("astro:after-swap", menuHover);
+  document.addEventListener("astro:page-load", menuHover);
 }

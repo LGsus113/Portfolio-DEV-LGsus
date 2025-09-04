@@ -50,5 +50,5 @@ function animationLogo() {
 
 export function initAnimationLogo() {
   document.addEventListener("DOMContentLoaded", animationLogo);
-  document.addEventListener("astro:after-swap", animationLogo);
+  document.addEventListener("astro:page-load", animationLogo);
 }
