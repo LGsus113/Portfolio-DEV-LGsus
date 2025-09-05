@@ -153,6 +153,11 @@ export interface SkillProps extends NameProps {
   level: string;
 }
 
+export interface SkillWithIcon extends NameProps {
+  level: string;
+  Icon?: any;
+}
+
 export interface LinkProfileProps extends TitleProps {
   url: string;
 }

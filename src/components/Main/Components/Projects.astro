@@ -3,12 +3,14 @@ import Encabezado from "@/utils/Encabezado.astro";
 import ItemProjects from "@/components/Main/Components/Projects/Item-Projects.astro";
 import SectionScheme from "@/utils/Section-Scheme.astro";
 import Code from "@/icons/code.astro";
+import SkillCarousel from "@/components/Main/Components/Projects/Skill-Carousel.astro";
 ---
 
 <SectionScheme id="proyectos" className="mb-40 gap-5">
   <Encabezado title="Proyectos">
     <Code class="size-7 xl:size-9" />
   </Encabezado>
+  <SkillCarousel />
   <div class="flex flex-col gap-24">
     <ItemProjects />
   </div>

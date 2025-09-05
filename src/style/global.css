@@ -8,6 +8,12 @@
 }
 
 @layer utilities {
+  .sombra-3d {
+    @apply filter drop-shadow-[2px_2px_2px_rgba(0,0,0,0.6)];
+  }
+  .button-carousel {
+    @apply px-4 py-2 border border-white/60 bg-gray-400/30 rounded-xl text-white disabled:opacity-40 disabled:brightness-100 brightness-90 hover:brightness-105 active:scale-95 transition-all duration-150 shadow-inner shadow-black
+  }
 }
 
 :root {

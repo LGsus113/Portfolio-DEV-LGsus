@@ -1,0 +1,33 @@
+---
+import { getSkillWithIcons } from "@/type-script/skills-icon";
+import SkillItem from "@/components/Main/Components/Projects/Skill-Item.astro";
+import Adelante from "@/icons/adelante.astro";
+import Atras from "@/icons/atras.astro";
+
+const skills = getSkillWithIcons();
+---
+
+<div class="flex flex-col items-center gap-5">
+  <div id="skill-carousel" class="grid grid-cols-3 gap-3">
+    {
+      skills.map(({ name, level, Icon }) => (
+        <SkillItem name={name} level={level}>
+          {Icon && <Icon class="size-10 sombra-3d" />}
+        </SkillItem>
+      ))
+    }
+  </div>
+  <div class="flex gap-3">
+    <button id="prevBtn" class="button-carousel" disabled>
+      <Atras class="size-7 text-lime-300 sombra-3d" />
+    </button>
+    <button id="nextBtn" class="button-carousel">
+      <Adelante class="size-7 text-purple-300 sombra-3d" />
+    </button>
+  </div>
+</div>
+
+<script>
+  import { initCarousel } from "@/type-script/carousel-functions";
+  initCarousel();
+</script>

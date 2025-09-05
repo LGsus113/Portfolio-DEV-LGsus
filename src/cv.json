@@ -146,43 +146,47 @@
   "skills": [
     {
       "name": "HTML",
-      "level": "Master"
+      "level": "Avanzado"
     },
     {
       "name": "CSS",
-      "level": "Advanced"
+      "level": "Avanzado"
+    },
+    {
+      "name": "TailwindCss",
+      "level": "Medio"
     },
     {
       "name": "JavaScript",
-      "level": "Advanced"
+      "level": "Medio"
     },
     {
       "name": "React",
-      "level": "Master"
+      "level": "Medio"
     },
     {
       "name": "Astro",
-      "level": "Advanced"
+      "level": "Medio"
     },
     {
       "name": "Java",
-      "level": "Advanced"
+      "level": "Medio"
     },
     {
-      "name": "Spring Boot",
-      "level": "Advanced"
+      "name": "SpringBoot",
+      "level": "Medio"
     },
     {
       "name": "SQL Server",
-      "level": "Advanced"
+      "level": "Medio"
     },
     {
       "name": "MySQL",
-      "level": "Advanced"
+      "level": "Medio"
     },
     {
-      "name": "NoSQL",
-      "level": "Advanced"
+      "name": "MongoDB",
+      "level": "Básico"
     }
   ],
   "languages": [
@@ -211,7 +215,8 @@
       "description": "Clon de la pagina de tesla antigua, involucra la creacion de las animaciones y diseño de la pagina en base a la pagina original, todo esto realizado con Astro, Tailwind y JS. Para aprendizaje, practica y mejora en el framework utilizado . Optimizado solo para desktop con un enfoque a mejorar en responsividad para mas adelante; el uso de animaciones tambien optimizados solo para desktop.",
       "highlights": ["Won award at AIHacks 2016"],
       "url": "#",
-      "github": "https://github.com/LGsus113/Tesla-Page-Astro.git"
+      "github": "https://github.com/LGsus113/Tesla-Page-Astro.git",
+      "technologies": ["Astro", "TailwindCss", "JavaScript"]
     },
     {
       "name": "D-CoDX - Proyecto Cibertec",
@@ -220,7 +225,8 @@
       "description": "Proyecto educativo para presentacion final de curso en cibertec, 5to ciclo. Intención de aprendizaje para programadores y disenadores con la busqueda de un entorno de trabajo saludable. Proyecto maqueta en dos versiones: versión con ReactJS y versió nativa con HTML, CSS y JS. Esta iniciativa busca dar una idea para generar una pagina web que ivolucre el trabajo ambos tipos de freelancers.",
       "highlights": ["Won award at AIHacks 2016"],
       "url": "#",
-      "github": "https://github.com/LGsus113/D-CoDX-.-React-Vite.git"
+      "github": "https://github.com/LGsus113/D-CoDX-.-React-Vite.git",
+      "technologies": ["React", "CSS"]
     }
   ]
 }

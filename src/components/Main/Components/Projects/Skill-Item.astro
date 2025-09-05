@@ -1,0 +1,15 @@
+---
+import type { SkillProps } from "@/type-script/type";
+const { name, level } = Astro.props as SkillProps;
+---
+
+<article
+  class="size-40 flex flex-col gap-5 justify-center items-center border border-white/60 bg-gray-400/30 rounded-2xl sombra-3d shadow-inner brightness-90 hover:brightness-105 transition-all duration-150 cursor-pointer"
+  data-skill={name}
+>
+  <div class="text-center">
+    <h1 class="text-purple-300 text-lg font-extrabold sombra-3d">{name}</h1>
+    <span class="text-lime-300 font-semibold sombra-3d">{level}</span>
+  </div>
+  <slot />
+</article>
