@@ -32,3 +32,17 @@ export function getSkillWithIcons(): SkillWithIcon[] {
     return { ...skill, Icon };
   });
 }
+
+export function initProjectFilter() {
+  document.addEventListener("skillSelected", (e: Event) => {
+    const customEvent = e as CustomEvent<{ tech: string }>;
+    const tech = customEvent.detail.tech;
+
+    const projects = document.querySelectorAll<HTMLElement>(".project");
+
+    projects.forEach((project) => {
+      const techs = (project.dataset.tech ?? "").split(",");
+      project.style.display = techs.includes(tech) ? "flex" : "none";
+    });
+  });
+}
