@@ -23,7 +23,7 @@ const colorClass: Record<"green" | "purple" | "yellow", string> = {
 const colors = colorClass[color as keyof typeof colorClass] || "text-gray-700";
 ---
 
-<div class:list={["flex flex-col gap-4", customClass]}>
+<div class:list={["flex flex-col gap-4 time-line-scroll-animation", customClass]}>
   <h1 class:list={["text-xl xl:text-2xl font-bold opacity-60", colors]}>
     {title}
   </h1>

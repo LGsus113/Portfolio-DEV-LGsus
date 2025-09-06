@@ -8,7 +8,7 @@ const skills = getSkillWithIcons();
 ---
 
 <div class="flex flex-col items-center gap-5">
-  <div id="skill-carousel" class="grid grid-cols-3 gap-3">
+  <div id="skill-carousel" class="grid grid-cols-3 gap-3 time-line-scroll-animation">
     {
       skills.map(({ name, level, Icon }) => (
         <SkillItem name={name} level={level}>
@@ -17,7 +17,7 @@ const skills = getSkillWithIcons();
       ))
     }
   </div>
-  <div class="flex gap-3">
+  <div class="flex gap-3 time-line-scroll-animation">
     <button id="prevBtn" class="button-carousel" disabled>
       <Atras class="size-7 text-lime-300 sombra-3d" />
     </button>
