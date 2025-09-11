@@ -5,9 +5,9 @@ import {
 } from "@/type-script/experience-service";
 import type { ExperienceProps, GroupedExperience } from "@/type-script/type";
 import Encabezado from "@/utils/Encabezado.astro";
-import ExperienceType from "@/components/Main/Components/Experience/Experience-Type.astro";
+import ExperienceType from "@indexmain/Components/Experience/Experience-Type.astro";
 import SectionScheme from "@/utils/Section-Scheme.astro";
-import ExperienceIcon from "@/icons/experience.astro";
+import ExperienceIcon from "@icons/experience.astro";
 
 const developer: GroupedExperience[] = await getDeveloperExperiencesGrouped();
 const atteClient: ExperienceProps[] = await getOtherExperiences("AtteClient");

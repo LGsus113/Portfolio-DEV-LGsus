@@ -10,12 +10,5 @@ export default defineConfig({
   adapter: netlify({}),
   vite: {
     plugins: [tailwindcss()],
-    resolve: {
-      alias: {
-        "@": resolve("./src"),
-        "@public": resolve("./public"),
-        "@cv": resolve("./src/cv.json"),
-      },
-    },
   },
 });

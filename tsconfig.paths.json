@@ -1,9 +1,21 @@
 {
   "compilerOptions": {
+    "types": ["node"],
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
       "@public/*": ["./public/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@animation/*": ["./src/components/Animation/*"],
+      "@indexheader/*": ["./src/components/Header/*"],
+      "@indexmain/*": ["./src/components/Main/*"],
+      "@indexfooter/*": ["./src/components/Footer/*"],
+      "@cvheader/*": ["./src/components-cv/Header/*"],
+      "@cvmain/*": ["./src/components-cv/Main/*"],
+      "@cvfooter/*": ["./src/components-cv/Footer/*"],
+      "@icons/*": ["./src/svgs/icons/*"],
+      "@forms/*": ["./src/svgs/forms/*"],
+      "@layout": ["./src/layouts/Layout.astro"],
       "@cv": ["./src/cv.json"]
     }
   }
